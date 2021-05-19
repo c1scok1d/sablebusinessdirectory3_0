@@ -144,6 +144,7 @@ public class NavigationController {
             }
         }
     }
+
     public void navigateToVerifyEmail(MainActivity mainActivity) {
         if (checkFragmentChange(RegFragments.HOME_USER_EMAIL_VERIFY)) {
             try {
@@ -465,10 +466,10 @@ public class NavigationController {
         activity.startActivity(intent);
     }
 
-    public void navigateToTermsAndConditionsActivity(Activity activity, String terms,String itemid) {
+    public void navigateToTermsAndConditionsActivity(Activity activity, String terms, String itemid) {
         Intent intent = new Intent(activity, com.macinternetservices.sablebusinessdirectory.ui.terms.TermsAndConditionsActivity.class);
         intent.putExtra(Constants.FLAG, terms);
-        intent.putExtra(Constants.CITY_ITEM_ID,itemid);
+        intent.putExtra(Constants.CITY_ITEM_ID, itemid);
         activity.startActivity(intent);
     }
 
@@ -553,7 +554,7 @@ public class NavigationController {
         activity.startActivity(intent);
     }
 
-    public void navigateToUserHistoryActivity(Activity activity,String userId, String flagPaidOrNot) {
+    public void navigateToUserHistoryActivity(Activity activity, String userId, String flagPaidOrNot) {
         Intent intent = new Intent(activity, UserHistoryListActivity.class);
         intent.putExtra(Constants.USER_ID, userId);
         intent.putExtra(Constants.FLAGPAIDORNOT, flagPaidOrNot);
@@ -805,28 +806,21 @@ public class NavigationController {
 
     public void navigateToSelectedCityDetail(FragmentActivity fragmentActivity, String
             cityId, String cityName, String isContainValue) {
-            if (!TextUtils.isEmpty(isContainValue)) {
-                Intent intent = new Intent();
-                intent.putExtra(Constants.CITY_ID, cityId);
-                intent.putExtra(Constants.CITY_NAME, cityName);
-                // fragmentActivity.setResult(Constants.SELECT_CITY, intent);
-                LocalBroadcastManager.getInstance(fragmentActivity.getApplicationContext()).sendBroadcast(new Intent("New_Data").putExtra(Constants.CITY_ID, cityId).putExtra(Constants.CITY_NAME, cityName));
+        if (!TextUtils.isEmpty(isContainValue)) {
+            Intent intent = new Intent();
+            intent.putExtra(Constants.CITY_ID, cityId);
+            intent.putExtra(Constants.CITY_NAME, cityName);
+            // fragmentActivity.setResult(Constants.SELECT_CITY, intent);
+            LocalBroadcastManager.getInstance(fragmentActivity.getApplicationContext()).sendBroadcast(new Intent("New_Data").putExtra(Constants.CITY_ID, cityId).putExtra(Constants.CITY_NAME, cityName));
 
-                fragmentActivity.finish();
+            fragmentActivity.finish();
 
-            } else {
-                Intent intent = new Intent(fragmentActivity, SelectedCityActivity.class);
-                intent.putExtra(Constants.CITY_ID, cityId);
-                intent.putExtra(Constants.CITY_NAME, cityName);
-                fragmentActivity.startActivity(intent);
-            }
-
-       /* Intent intent = new Intent(fragmentActivity, SelectedCityActivity.class);
-
-        intent.putExtra(Constants.CITY_ID, cityId);
-        intent.putExtra(Constants.CITY_NAME, cityName);
-
-        fragmentActivity.startActivity(intent); */
+        } else {
+            Intent intent = new Intent(fragmentActivity, SelectedCityActivity.class);
+            intent.putExtra(Constants.CITY_ID, cityId);
+            intent.putExtra(Constants.CITY_NAME, cityName);
+            fragmentActivity.startActivity(intent);
+        }
     }
 
     public void navigateToBlogListBySelectedCity(FragmentActivity fragmentActivity, String
@@ -904,6 +898,7 @@ public class NavigationController {
 
         activity.finish();
     }
+
     public void navigateBackFromSearchFilterToAllListing(FragmentActivity activity, ItemParameterHolder itemParameterHolder) {
         Intent intent = new Intent();
 
@@ -954,7 +949,7 @@ public class NavigationController {
                         .replace(containerId, fragment)
                         .commitAllowingStateLoss();
                 Bundle bundle = new Bundle();
-                bundle.putString(Constants.PRIVACY_POLICY_NAME,Constants.EMPTY_STRING);
+                bundle.putString(Constants.PRIVACY_POLICY_NAME, Constants.EMPTY_STRING);
                 fragment.setArguments(bundle);
 
             } catch (Exception e) {
@@ -977,8 +972,8 @@ public class NavigationController {
             intent.putExtra(Constants.SUBCATEGORY_ID, selectId);
             intent.putExtra(Constants.CATEGORY_ID, Id);
         }
-        if (flag == Constants.SELECT_STATUS){
-            intent.putExtra(Constants.STATUS_ID,selectId);
+        if (flag == Constants.SELECT_STATUS) {
+            intent.putExtra(Constants.STATUS_ID, selectId);
         }
         activity.startActivityForResult(intent, 1);
     }
@@ -990,14 +985,13 @@ public class NavigationController {
             intent.putExtra(Constants.CATEGORY_ID, id);
             intent.putExtra(Constants.CATEGORY_NAME, name);
             expandActivity.setResult(Constants.SELECT_CATEGORY, intent);
-        }
-        else if (flag == Constants.SELECT_SUBCATEGORY) {
+        } else if (flag == Constants.SELECT_SUBCATEGORY) {
             intent.putExtra(Constants.SUBCATEGORY_ID, id);
             intent.putExtra(Constants.SUBCATEGORY_NAME, name);
             expandActivity.setResult(Constants.SELECT_SUBCATEGORY, intent);
-        }else if (flag == Constants.SELECT_STATUS){
-            intent.putExtra(Constants.STATUS_ID,id);
-            intent.putExtra(Constants.STATUS_NAME,name);
+        } else if (flag == Constants.SELECT_STATUS) {
+            intent.putExtra(Constants.STATUS_ID, id);
+            intent.putExtra(Constants.STATUS_NAME, name);
             expandActivity.setResult(Constants.SELECT_STATUS, intent);
         } else if (flag == Constants.SELECT_CITY) {
             intent.putExtra(Constants.CITY_ID, id);
@@ -1021,7 +1015,7 @@ public class NavigationController {
         intent.putExtra(Constants.ITEM_ID, itemId);
         intent.putExtra(Constants.SPECIFICATION_ID, specificationId);
         intent.putExtra(Constants.SPECIFICATION_NAME, specificationName);
-        intent.putExtra(Constants.SPECIFICATION_DESCRIPTION,specificationDescription);
+        intent.putExtra(Constants.SPECIFICATION_DESCRIPTION, specificationDescription);
         activity.startActivity(intent);
     }
 
@@ -1047,12 +1041,12 @@ public class NavigationController {
 
     public void navigateToGalleryImage(Activity activity) {
         if (Utils.isStoragePermissionGranted(activity)) {
-        Intent pickPhoto = new Intent();
-        pickPhoto.setType("image/*");
-        pickPhoto.setAction(Intent.ACTION_OPEN_DOCUMENT);
-        pickPhoto.addCategory(Intent.CATEGORY_OPENABLE);
+            Intent pickPhoto = new Intent();
+            pickPhoto.setType("image/*");
+            pickPhoto.setAction(Intent.ACTION_OPEN_DOCUMENT);
+            pickPhoto.addCategory(Intent.CATEGORY_OPENABLE);
 
-        activity.startActivityForResult(pickPhoto, Constants.RESULT_LOAD_IMAGE_CATEGORY);
+            activity.startActivityForResult(pickPhoto, Constants.RESULT_LOAD_IMAGE_CATEGORY);
         }
 
     }
@@ -1078,6 +1072,7 @@ public class NavigationController {
         }
 
     }
+
     public void navigateBackFromMapView(Activity activity, String lat, String lng) {
         Intent intent = new Intent();
         intent.putExtra(Constants.LAT, lat);
@@ -1088,7 +1083,7 @@ public class NavigationController {
 
     public void navigateToItemUploadActivity(Activity activity, Item itemList,String city_id,String city_name) {
         Intent intent = new Intent(activity, ItemUploadActivity.class);
-        if(itemList != null){
+        if (itemList != null) {
             intent.putExtra(Constants.ITEM_ID, itemList.id);
             intent.putExtra(Constants.ITEM_NAME, itemList.name);
         }else{
@@ -1098,6 +1093,7 @@ public class NavigationController {
         }
         activity.startActivity(intent);
     }
+
     public void navigateToPhoneVerifyFragment(MainActivity mainActivity, String number, String userName) {
         if (checkFragmentChange(RegFragments.HOME_PHONE_VERIFY)) {
             try {
@@ -1116,7 +1112,7 @@ public class NavigationController {
         }
     }
 
-    public void navigateToPhoneVerifyActivity(Activity activity,String number,String userName) {
+    public void navigateToPhoneVerifyActivity(Activity activity, String number, String userName) {
         Intent intent = new Intent(activity, VerifyMobileActivity.class);
         intent.putExtra(Constants.USER_PHONE, number);
         intent.putExtra(Constants.USER_NAME, userName);
@@ -1168,12 +1164,14 @@ public class NavigationController {
             }
         }
     }
+
     public void navigateToItemPromoteActivity(Activity activity, String itemId) {
         Intent intent = new Intent(activity, ItemPromoteActivity.class);
         intent.putExtra(Constants.ITEM_ID, itemId);
 
         activity.startActivity(intent);
     }
+
     /**
      * Remark : This enum is only for MainActivity,
      * For the other fragments, no need to register here

@@ -3,6 +3,7 @@
     <ANNOTATIONS>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f18bd73b043bfd1e4f261836768384e8/jetified-stripe-android-10.4.6/annotations.zip!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5f13bbd6a5722a9a075548d0148666d5/jetified-stripe-android-10.4.6/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f7904f16fe5fa60fb3213b5bdcbb5824/jetified-stripe-android-10.4.6/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f18bd73b043bfd1e4f261836768384e8/jetified-stripe-android-10.4.6/jars/classes.jar!/" />
@@ -11,6 +12,9 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5f13bbd6a5722a9a075548d0148666d5/jetified-stripe-android-10.4.6/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5f13bbd6a5722a9a075548d0148666d5/jetified-stripe-android-10.4.6/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5f13bbd6a5722a9a075548d0148666d5/jetified-stripe-android-10.4.6/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f7904f16fe5fa60fb3213b5bdcbb5824/jetified-stripe-android-10.4.6/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f7904f16fe5fa60fb3213b5bdcbb5824/jetified-stripe-android-10.4.6/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f7904f16fe5fa60fb3213b5bdcbb5824/jetified-stripe-android-10.4.6/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.stripe/stripe-android/10.4.6/bcfc81bb3a96627e5e1dc40fd3f6d0e8e7cb46e7/stripe-android-10.4.6-javadoc.jar!/" />

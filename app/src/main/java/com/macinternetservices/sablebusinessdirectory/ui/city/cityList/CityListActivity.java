@@ -23,7 +23,6 @@ import com.macinternetservices.sablebusinessdirectory.utils.MyContextWrapper;
 import com.macinternetservices.sablebusinessdirectory.utils.Utils;
 
 public class CityListActivity extends PSAppCompactActivity {
-
     BroadcastReceiver receiver=new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -39,7 +38,6 @@ public class CityListActivity extends PSAppCompactActivity {
             }
         }
     };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +45,7 @@ public class CityListActivity extends PSAppCompactActivity {
         ActivityCityListBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_city_list);
 
         initUI(binding);
+
         LocalBroadcastManager.getInstance(this).registerReceiver(receiver,new IntentFilter("New_Data"));
     }
 
@@ -72,36 +71,35 @@ public class CityListActivity extends PSAppCompactActivity {
 
         if (getIntent().hasExtra("Coming_From_Main")) {
             try {
-                CityListFragment fragment = new CityListFragment();
-                Bundle bundle = new Bundle();
-                bundle.putString("Coming_From_Main", getIntent().getStringExtra("Coming_From_Main"));
+                CityListFragment fragment=new CityListFragment();
+                Bundle bundle=new Bundle();
+                bundle.putString("Coming_From_Main",getIntent().getStringExtra("Coming_From_Main"));
                 fragment.setArguments(bundle);
 
                 this.getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.content_frame, fragment)
+                        .replace(R.id.content_frame,fragment)
                         .commitAllowingStateLoss();
             } catch (Exception e) {
                 Utils.psErrorLog("Error! Can't replace fragment.", e);
             }
-        } else {
-            try {
-                CityListFragment fragment = new CityListFragment();
-                Bundle bundle = new Bundle();
-                bundle.putString("Coming_From_Main", "");
+        }else {
+            try{
+                CityListFragment fragment=new CityListFragment();
+                Bundle bundle=new Bundle();
+                bundle.putString("Coming_From_Main","");
                 fragment.setArguments(bundle);
 
                 this.getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.content_frame, fragment)
+                        .replace(R.id.content_frame,fragment)
                         .commitAllowingStateLoss();
             } catch (Exception e) {
                 Utils.psErrorLog("Error! Can't replace fragment.", e);
             }
-
             // setup Fragment
-            //setupFragment(new CityListFragment());
-            // Or you can call like this
-            //setupFragment(new NewsListFragment(), R.id.content_frame);
+            //   setupFragment(new CityListFragment());
         }
+        // Or you can call like this
+        //setupFragment(new NewsListFragment(), R.id.content_frame);
     }
 
     @Override
@@ -115,4 +113,9 @@ public class CityListActivity extends PSAppCompactActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        /*  LocalBroadcastManager.getInstance(this).unregisterReceiver(receiver);*/
+        super.onDestroy();
+    }
 }

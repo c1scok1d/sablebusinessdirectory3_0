@@ -4,8 +4,11 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Address;
@@ -33,6 +36,7 @@ import androidx.annotation.VisibleForTesting;
 import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -161,21 +165,21 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
         binding.get().mapViewButton.setOnClickListener(v -> navigationController.navigateToLists(getActivity(), Constants.MAP, itemViewModel.lat, itemViewModel.lng));
 
         // for city
-        if(!selectedCityId.isEmpty()) {
-            binding.get().cityTextView1.setVisibility(View.GONE);
-            binding.get().cityNameTextView1.setVisibility(View.GONE);
-            binding.get().cityImageView2.setVisibility(View.GONE);
-            binding.get().businessNameTextView.setVisibility(View.GONE);
+ /*       if(!selectedCityId.isEmpty()) {
+            binding.get().cityTextView1.setVisibility(View.VISIBLE);
+            binding.get().cityNameTextView1.setVisibility(View.VISIBLE);
+            binding.get().cityImageView2.setVisibility(View.VISIBLE);
+            binding.get().businessNameTextView.setVisibility(View.VISIBLE);
         } else {
-            binding.get().cityTextView1.setOnClickListener(v -> {
-                navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_CITY, itemViewModel.cityId, "");
-            });
-        }
 
+        }*/
+        binding.get().cityTextView1.setOnClickListener(v -> {
+            navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_CITY, itemViewModel.cityId, "");
+        });
         // for category
         binding.get().categoryTextView.setOnClickListener(v -> {
-            if (itemViewModel.cityId.isEmpty() && selectedCityId.isEmpty()) {
-                psDialogMsg.showWarningDialog(getString(R.string.error_message__choose_city), getString(R.string.app__ok));
+            if (itemViewModel.cityId.isEmpty()/* && selectedCityId.isEmpty()*/) {
+                psDialogMsg.showWarningDialog("Select City", getString(R.string.app__ok));
                 psDialogMsg.show();
             } else {
                 navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_CATEGORY, itemViewModel.catSelectId, "");
@@ -296,7 +300,10 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
     protected void initViewModels() {
         itemViewModel = new ViewModelProvider(this, viewModelFactory).get(ItemViewModel.class);
         imageViewModel = new ViewModelProvider(this, viewModelFactory).get(ImageViewModel.class);
-
+        if (getArguments()!=null){
+            itemViewModel.cityId = getArguments().getString(Constants.CITY_ID);
+            binding.get().cityTextView1.setText( getArguments().getString(Constants.CITY_NAME));
+        }
     }
 
     @Override

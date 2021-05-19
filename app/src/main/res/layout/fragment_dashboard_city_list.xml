@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="loadingMore"
             type="boolean" />
@@ -15,7 +14,6 @@
         android:background="@color/layout__primary_background"
         android:paddingBottom="@dimen/space_72"
         android:visibility="visible">
-
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh"

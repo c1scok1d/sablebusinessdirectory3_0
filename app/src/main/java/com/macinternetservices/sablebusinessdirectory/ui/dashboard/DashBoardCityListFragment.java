@@ -92,7 +92,6 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
     private boolean touched = false;
     private Timer unTouchedTimer;
 
-
     @Inject
     protected SharedPreferences pref;
     private String startDate = Constants.ZERO;
@@ -165,10 +164,11 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
         psDialogMsg = new PSDialogMsg(getActivity(), false);
 
         binding.get().floatingActionButton.setOnClickListener(view ->{
-            navigationController.navigateToItemUpdated((MainActivity)getActivity());
-            pref.edit().putString(Constants.CITY_ID,Constants.EMPTY_STRING).apply();
+            navigationController.navigateToItemUploadActivity(getActivity(),null,"","");
+            //   navigationController.navigateToItemUpdated((MainActivity)getActivity());
+       /*     pref.edit().putString(Constants.CITY_ID,Constants.EMPTY_STRING).apply();
             Utils.navigateOnUserVerificationActivity(userIdToVerify, loginUserId, psDialogMsg, getActivity(), navigationController, () ->
-                        navigationController.navigateToItemUploadActivity(getActivity(), null,"",""));
+                        navigationController.navigateToItemUploadActivity(getActivity(), null));*/
         });
 
         if (getActivity() instanceof MainActivity) {
@@ -494,7 +494,7 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
                 switch (result.status) {
                     case LOADING:
                         if (result.data != null) {
-                               replaceDiscountItem(result.data);
+                            replaceDiscountItem(result.data);
                         }
                         break;
                     case SUCCESS:
@@ -578,7 +578,7 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
 
                     case LOADING:
                         if (result.data != null) {
-                                 replaceRecentItemList(result.data);
+                            replaceRecentItemList(result.data);
                         }
 
                         break;
@@ -708,7 +708,7 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
     @SuppressLint("NewApi")
     private void replaceFeaturedItem(List<Item> items) {
 
-       if (!preferences.getString(Constants.RADIUS_KEY, "").equals("All")) {
+        if (!preferences.getString(Constants.RADIUS_KEY, "").equals("All")) {
             List<Item> list = new ArrayList<>();
             for (Item item : items) {
                 if (milesDistanceBetweenPoints(Float.parseFloat(item.lat), Float.parseFloat(item.lng), Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))) <=
@@ -717,9 +717,9 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
                 }
             }
             this.featuredItemListAdapter.get().replace(list);
-       } else {
+        } else {
             this.featuredItemListAdapter.get().replace(items);
-       }
+        }
         binding.get().executePendingBindings();
 
         items.sort((o1, o2) -> Double.compare(milesDistanceBetweenPoints(Float.parseFloat(o1.lat), Float.parseFloat(o1.lng), Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))), milesDistanceBetweenPoints(Float.parseFloat(o2.lat), Float.parseFloat(o2.lng), Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude())))));
@@ -779,7 +779,7 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
 
     @SuppressLint("NewApi")
     private void replaceRecentItemList(List<Item> itemList) {
-       if (itemList!=null) {
+        if (itemList!=null) {
             if (!preferences.getString(Constants.RADIUS_KEY, "").equals("All")) {
                 List<Item> list = new ArrayList<>();
 
