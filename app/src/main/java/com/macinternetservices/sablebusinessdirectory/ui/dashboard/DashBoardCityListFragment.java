@@ -166,9 +166,9 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
 
         binding.get().floatingActionButton.setOnClickListener(view ->{
             navigationController.navigateToItemUpdated((MainActivity)getActivity());
-       /*     pref.edit().putString(Constants.CITY_ID,Constants.EMPTY_STRING).apply();
+            pref.edit().putString(Constants.CITY_ID,Constants.EMPTY_STRING).apply();
             Utils.navigateOnUserVerificationActivity(userIdToVerify, loginUserId, psDialogMsg, getActivity(), navigationController, () ->
-                        navigationController.navigateToItemUploadActivity(getActivity(), null));*/
+                        navigationController.navigateToItemUploadActivity(getActivity(), null,"",""));
         });
 
         if (getActivity() instanceof MainActivity) {
