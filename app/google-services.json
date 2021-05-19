@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "945661989282",
+    "project_id": "sable-mobile-app-1617380169435",
+    "storage_bucket": "sable-mobile-app-1617380169435.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:945661989282:android:c851fe0b4e367cf5fa22fb",
+        "android_client_info": {
+          "package_name": "com.macinternetservices.sablebusinessdirectory"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "945661989282-368qt6s76e5pck7srobefm1qt9dgfdnr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3cdFkVivjeGN3cosfKwIkehzpIkY59oo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "945661989282-368qt6s76e5pck7srobefm1qt9dgfdnr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

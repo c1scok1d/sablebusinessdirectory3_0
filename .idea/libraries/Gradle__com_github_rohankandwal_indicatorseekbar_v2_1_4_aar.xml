@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.rohankandwal:indicatorseekbar:v2.1.4@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ef4b40dd6a09c728d3003e9ae4d27bf9/jetified-indicatorseekbar-v2.1.4/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ef4b40dd6a09c728d3003e9ae4d27bf9/jetified-indicatorseekbar-v2.1.4/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ef4b40dd6a09c728d3003e9ae4d27bf9/jetified-indicatorseekbar-v2.1.4/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/161859535b912c22b7ac1b317b3c3d95/jetified-indicatorseekbar-v2.1.4/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/161859535b912c22b7ac1b317b3c3d95/jetified-indicatorseekbar-v2.1.4/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/161859535b912c22b7ac1b317b3c3d95/jetified-indicatorseekbar-v2.1.4/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.rohankandwal/indicatorseekbar/v2.1.4/d0fe92bb6ee4c7479ca19de37dc2e997b700cb4f/indicatorseekbar-v2.1.4-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.rohankandwal/indicatorseekbar/v2.1.4/2c289469539cf840361e6450d2e5f3b0292108a/indicatorseekbar-v2.1.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

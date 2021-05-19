@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.macinternetservices.sablebusinessdirectory">
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" /> <!-- for card.io card scanning -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+
+    <application
+        android:name="com.macinternetservices.sablebusinessdirectory.PSApp"
+        android:allowBackup="true"
+        android:fullBackupContent="false"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app__app_name"
+        android:largeHeap="true"
+        android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true"
+        android:theme="@style/Base.PSTheme"
+        tools:replace="android:label">
+        <activity android:name="com.macinternetservices.sablebusinessdirectory.ui.item.user_item.LoginUserItemListActivity"></activity>
+        <activity android:name="com.macinternetservices.sablebusinessdirectory.ui.privacypolicy.PrivacyPolicyActivity" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.apploading.AppLoadingActivity"
+            android:label="@string/app__app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.MainActivity"
+            android:label="@string/app__app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.rating.RatingListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.city.selectedcity.SelectedCityActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.city.detail.CityActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.subcategory.SubCategoryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.map.MapActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.detail.ItemActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.blog.listbycityid.BlogListByCityIdActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.category.list.CategoryListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.collection.header.CollectionHeaderListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.user.ProfileEditActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.user.UserRegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.user.phonelogin.PhoneLoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.user.verifyphone.VerifyMobileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.user.verifyemail.VerifyEmailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.user.UserLoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.user.UserForgotPasswordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.user.PasswordChangeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.search.specialfilterbyattributes.FilteringActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.notification.detail.NotificationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+        android:name="com.macinternetservices.sablebusinessdirectory.ui.setting.SettingActivity"
+        android:screenOrientation="portrait"
+        android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.terms.TermsAndConditionsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.notification.setting.NotificationSettingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.setting.appinfo.AppInfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.favourite.FavouriteListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.comment.detail.CommentDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.notification.list.NotificationListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.search.searchlist.SearchListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.comment.list.CommentListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.gallery.GalleryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.readmore.ReadMoreActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.gallery.detail.GalleryDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.dashboard.DashboardSearchByCategoryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.history.UserHistoryListActivity"
+            android:label="@string/title__activity_user_history_list"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.collection.itemCollection.ItemCollectionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.blog.list.BlogListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.blog.detail.BlogDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.forceupdate.ForceUpdateActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.city.cityList.CityListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.map.mapFilter.MapFilteringActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.upload.SelectionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.upload.ItemUploadActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.imageupload.ImageUploadActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.specification.SpecificationListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.specification.addspecification.AddAndEditSpecificationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.imageupload.itemimagelist.ItemImageListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.upload.map.MapItemEntryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.stripe.StripeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.promote.ItemPromoteActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.macinternetservices.sablebusinessdirectory.utils.PermissionRationaleActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.PSTheme" />
+        <activity
+            android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="${applicationId}.braintree" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/google_map_api_key" />
+        <meta-data
+            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+            android:value="true" />
+        <meta-data
+            android:name="com.macinternetservices.sablebusinessdirectory.utils.CustomCachingGlideModule"
+            android:value="AppGlideModule" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/global__accent" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="@string/razor_key" />
+
+        <service android:name="com.macinternetservices.sablebusinessdirectory.utils.FirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".utils.GeolocationService"
+            android:exported="false"
+            android:enabled="true">
+        </service>
+
+        <service
+            android:name=".utils.GeofenceReceiver"
+            android:exported="false"
+            android:enabled="true">
+        </service>
+
+        <receiver
+            android:name=".utils.GeofenceReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="ACTION_RECEIVE_GEOFENCE" />
+            </intent-filter>
+        </receiver>
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+    </application>
+
+</manifest>

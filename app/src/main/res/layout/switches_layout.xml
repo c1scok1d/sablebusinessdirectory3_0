@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    android:elevation="10dp"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="@color/bt_white"
+        android:textSize="18dp"
+        android:background="@color/bt_black"
+        android:text="Settings"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:textColor="@color/bt_black"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Push Notification"/>
+        <com.suke.widget.SwitchButton
+            android:id="@+id/push_not_switch"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:textColor="@color/bt_black"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="GeoLocation Service"/>
+        <com.suke.widget.SwitchButton
+            android:id="@+id/geo_location_switch"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+
+    <com.warkiz.widget.IndicatorStayLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/md_black_1000"
+            android:text="Alert Radius"/>
+
+        <com.warkiz.widget.IndicatorSeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            app:isb_indicator_text_color="@color/colorWhite"
+            android:id="@+id/radius_seekbar"
+            app:isb_thumb_text_color="@color/colorWhite"
+            app:isb_seek_smoothly="true"
+            app:isb_show_tick_marks_type="divider"
+            app:isb_tick_marks_drawable="@mipmap/ic_launcher"
+            app:isb_show_tick_texts="true"
+            app:isb_tick_texts_size="15sp"
+            app:isb_tick_texts_color="@color/colorWhite"
+            app:isb_thumb_color="@color/md_black_1000"
+            app:isb_thumb_size="15dp"
+            app:isb_show_indicator="rounded_rectangle"
+            app:isb_indicator_color="@color/md_black_1000"
+            android:visibility="gone"
+            app:isb_indicator_text_size="18sp"
+            app:isb_track_background_color="@color/md_black_1000"
+            app:isb_track_background_size="2dp"
+            app:isb_track_progress_color="@color/md_black_1000"
+            app:isb_only_thumb_draggable="false"
+            />
+    </com.warkiz.widget.IndicatorStayLayout>
+</LinearLayout>
