@@ -791,7 +791,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
 
         itemViewModel.setSaveOneItemObj(
                 loginUserId,
-                selectedCityId,
+                itemViewModel.cityId,
                 itemViewModel.catSelectId,
                 itemViewModel.subCatSelectId,
                 publishOrUnpublish,
