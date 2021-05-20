@@ -825,7 +825,6 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                 binding.get().cancelationTextView.getText().toString(),
                 binding.get().additionalTextView.getText().toString(),
                 itemViewModel.itemSelectId);
-        Log.e("foobar","foobar");
     }
 
     private void openTimePicker(EditText editText) {
