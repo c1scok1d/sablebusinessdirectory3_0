@@ -99,8 +99,7 @@ public class GeofenceNotification {
                 break;
             case Geofence.GEOFENCE_TRANSITION_DWELL:
                 notificationText = "You are near " + simpleGeofence.getItem_name();
-                notificationText2 = "Support black business.  Stop in and say 'Hi!'";
-                //String image = simpleGeofence.getImage_id();
+                notificationText2 = "Stop in and say Hi!";
                 transitionDwellNotification(context, notificationText, notificationText2,simpleGeofence.getImage_id());
                 break;
 
@@ -185,7 +184,7 @@ public class GeofenceNotification {
         Notification notification = new NotificationCompat.Builder(mContext, CHANNEL_ID)
                 .setContentTitle(message2)
                 .setContentText(message)
-                .setSubText("Black Owned Business Alert")
+                //.setSubText("Black Owned Business Alert")
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setLargeIcon(getBitmapFromURL(url))
                 .setStyle(new NotificationCompat.BigPictureStyle()
