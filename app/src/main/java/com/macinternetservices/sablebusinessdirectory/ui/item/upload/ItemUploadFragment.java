@@ -743,7 +743,8 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                 itemViewModel.statusSelectId = data.getStringExtra(Constants.STATUS_ID);
                 binding.get().statusTextView.setText(data.getStringExtra(Constants.STATUS_NAME));
             } else if (resultCode == Constants.SELECT_CITY) {
-                itemViewModel.cityId = data.getStringExtra(Constants.CITY);
+                //assign city_id to city id of user selected city
+                itemViewModel.cityId = data.getStringExtra(Constants.CITY_ID);
                 binding.get().cityTextView1.setText(data.getStringExtra(Constants.CITY_NAME));
             }
         } else if (requestCode == Constants.RESULT_GO_TO_IMAGE_UPLOAD && resultCode == Constants.RESULT_CODE_FROM_IMAGE_UPLOAD) {
@@ -823,10 +824,8 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                 binding.get().termsAndConditionTextView.getText().toString(),
                 binding.get().cancelationTextView.getText().toString(),
                 binding.get().additionalTextView.getText().toString(),
-                itemViewModel.itemSelectId
-//                ,
-//                binding.get().statusTextView.getText().toString()
-        );
+                itemViewModel.itemSelectId);
+        Log.e("foobar","foobar");
     }
 
     private void openTimePicker(EditText editText) {
