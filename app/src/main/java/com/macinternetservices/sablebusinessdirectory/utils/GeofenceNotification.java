@@ -24,6 +24,7 @@ import androidx.core.content.FileProvider;
 
 import com.google.android.gms.location.Geofence;
 import com.macinternetservices.sablebusinessdirectory.BuildConfig;
+import com.macinternetservices.sablebusinessdirectory.Config;
 import com.macinternetservices.sablebusinessdirectory.MainActivity;
 import com.macinternetservices.sablebusinessdirectory.R;
 import com.macinternetservices.sablebusinessdirectory.ui.item.detail.ItemActivity;
@@ -160,36 +161,37 @@ public class GeofenceNotification {
                 (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
         notifManager.notify(new Random().nextInt(), notification);
     }
-    private void transitionDwellNotification(final Context mContext,final String message, final String message2, String imageId) {
+    public static Bitmap getBitmapFromURL(String src) {
+        try {
+            URL url = new URL(src);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap myBitmap = BitmapFactory.decodeStream(input);
+            return myBitmap;
+        } catch (IOException e) {
+            // Log exception
+            return null;
+        }
+    }
+    private void transitionDwellNotification(final Context mContext,final String message, final String message2, String image_id){
         createNotificationChannel(mContext);
         Intent notificationIntent = new Intent(mContext, MainActivity.class);
-        String outputFile = context.getExternalFilesDir("DirName") + imageId;
 
-        File file = new File(outputFile);
-        Log.e("OutPutFile",outputFile);
-        Uri uri = FileProvider.getUriForFile(context,
-                BuildConfig.APPLICATION_ID + ".provider",file);
-
-        Bitmap bitmap = null;
-        try {
-            bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), uri);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        String url = Config.APP_IMAGES_URL + image_id;
         PendingIntent notificationTapIntent = PendingIntent.getActivity(mContext,
                 0, notificationIntent, 0);
-
         Notification notification = new NotificationCompat.Builder(mContext, CHANNEL_ID)
                 .setContentTitle(message2)
                 .setContentText(message)
-                //.setSubText("Black Owned Business Alert")
-                .setSmallIcon(R.mipmap.logo_wht_round)
-                //.setLargeIcon(bitmap) //should be item image
+                .setSubText("Black Owned Business Alert")
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setLargeIcon(getBitmapFromURL(url))
                 .setStyle(new NotificationCompat.BigPictureStyle()
-                        .bigPicture(bitmap) //should be item image
+                        .bigPicture(getBitmapFromURL(url))
                         .bigLargeIcon(null))
-                .setContentIntent(notificationTapIntent) // ontap take user to item
+                .setContentIntent(notificationTapIntent) // notification tap action
                 .build();
         notification.flags |= Notification.FLAG_AUTO_CANCEL;
         NotificationManager notifManager =
