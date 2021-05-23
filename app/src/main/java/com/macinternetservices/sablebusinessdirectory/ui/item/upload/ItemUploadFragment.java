@@ -90,6 +90,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
     //private AutoCompleteTextView search_tx_loc;
     private Double latitude, longitude;
 
+
     @VisibleForTesting
     private AutoClearedValue<FragmentItemUploadBinding> binding;
     private AutoClearedValue<ProgressDialog> progressDialog;
@@ -198,7 +199,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
         });
 
         //region for status
-        binding.get().statusTextView.setOnClickListener(v -> navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_STATUS, itemViewModel.statusSelectId, ""));
+        binding.get().statusTextView.setOnClickListener(v -> navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_STATUS, itemViewModel.statusSelectId, "1"));
 
         // for openTime
         binding.get().openTimeTextView.setOnClickListener(v -> openTimePicker(binding.get().openTimeTextView));
@@ -991,13 +992,11 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
     private void replaceImages(List<Image> imageList) {
         if (imageList.size() == 0) {
             binding.get().noImagesTextView.setVisibility(View.VISIBLE);
-            itemEntryImageAdapter.get().replace(imageList);
-            binding.get().executePendingBindings();
         } else {
             binding.get().noImagesTextView.setVisibility(View.GONE);
-            itemEntryImageAdapter.get().replace(imageList);
-            binding.get().executePendingBindings();
         }
+        itemEntryImageAdapter.get().replace(imageList);
+        binding.get().executePendingBindings();
     }
 
     @Override

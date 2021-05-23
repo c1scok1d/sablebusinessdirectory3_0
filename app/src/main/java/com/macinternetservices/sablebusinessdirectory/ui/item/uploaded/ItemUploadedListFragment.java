@@ -76,7 +76,7 @@ public class ItemUploadedListFragment extends PSFragment implements DataBoundLis
         if (item.getItemId() == R.id.clearButton) {
             Utils.psLog("I am here for ok Button");
 
-            navigationController.navigateToItemUploadActivity(getActivity(),null,"","");
+            //navigationController.navigateToItemUploadActivity(getActivity(),null,"","");
             itemViewModel.loadingDirection = Utils.LoadingDirection.top;
         }
         return super.onOptionsItemSelected(item);

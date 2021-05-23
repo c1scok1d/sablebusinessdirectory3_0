@@ -7,8 +7,8 @@ import com.macinternetservices.sablebusinessdirectory.Config;
 import javax.inject.Inject;
 
 /**
- * Created by Panacea-Soft on 10/16/18.
- * Contact Email : teamps.is.cool@gmail.com
+ * Created by MAC Internet Services on 05/21/2021.
+ * Contact Email : admin@thesablebusinessdirectory.com
  */
 
 //@Singleton

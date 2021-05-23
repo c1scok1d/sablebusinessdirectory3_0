@@ -6,8 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 
 /**
- * Created by Panacea-Soft on 11/25/17.
- * Contact Email : teamps.is.cool@gmail.com
+ * Created by MAC Internet Services on 11/25/17.
+ * Contact Email : admin@thesablebusinessdirectory.com
  */
 
 @Entity(primaryKeys = "imgId")

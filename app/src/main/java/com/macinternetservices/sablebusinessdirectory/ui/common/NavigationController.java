@@ -97,11 +97,9 @@ import java.io.Serializable;
 
 import javax.inject.Inject;
 
-//import com.panaceasoft.psmulticity.ui.city.selectedCity.SelectedCityFragment;
-
 /**
- * Created by Panacea-Soft on 11/17/17.
- * Contact Email : teamps.is.cool@gmail.com
+ * Created by MAC Internet Services on 05/21/2021.
+ * Contact Email : admin@thesablebusinessdirectory.com
  */
 
 public class NavigationController {

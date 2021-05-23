@@ -6,8 +6,8 @@ import android.content.Context;
 import javax.inject.Inject;
 
 /**
- * Created by Panacea-Soft on 1/10/18.
- * Contact Email : teamps.is.cool@gmail.com
+ * Created by MAC Internet Services on 1/10/18.
+ * Contact Email : admin@thesablebusinessdirectory.com
  */
 
 

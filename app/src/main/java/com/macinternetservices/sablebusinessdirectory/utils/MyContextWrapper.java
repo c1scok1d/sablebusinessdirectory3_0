@@ -9,8 +9,8 @@ import android.os.Build;
 import java.util.Locale;
 
 /**
- * Created by Panacea-Soft on 9/17/18.
- * Contact Email : teamps.is.cool@gmail.com
+ * Created by MAC Internet Services on 9/17/18.
+ * Contact Email : admin@thesablebusinessdirectory.com
  */
 
 
