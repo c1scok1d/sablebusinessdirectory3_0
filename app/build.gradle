@@ -10,14 +10,14 @@ android {
         }
     }
     compileSdkVersion 30
-    buildToolsVersion '29.0.3'
+    buildToolsVersion '30.0.3'
 
     defaultConfig {
         applicationId "com.macinternetservices.sablebusinessdirectory"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 12
-        versionName "2.1"
+        versionName "3.0"
         multiDexEnabled true
     }
     // V2.1 = 12
