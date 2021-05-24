@@ -159,9 +159,14 @@ public class GeofenceNotification {
     }
     private void transitionDwellNotification(final Context mContext,final String message, final String message2, SimpleGeofence geofence){
         createNotificationChannel(mContext);
-        NavigationController navigationController = null;
-        Intent notificationIntent = new Intent(mContext, navigationController.navigateToSelectedItemDetail(mContext, geofence.getItem_name(), geofence.getId(), geofence.getCity_id())); //change intent to go to item detail
+
+        Intent notificationIntent = new Intent(); //change intent to go to item detail
         //Intent notificationIntent = new Intent(mContext, MainActivity.class);
+        notificationIntent.putExtra(Constants.HISTORY_FLAG, Constants.ONE);
+        notificationIntent.putExtra(Constants.ITEM_NAME, geofence.getItem_name());
+        notificationIntent.putExtra(Constants.ITEM_ID, geofence.getId());
+        notificationIntent.putExtra(Constants.CITY_ID, geofence.getCity_id());
+
         PendingIntent notificationTapIntent = PendingIntent.getActivity(mContext,
                 0, notificationIntent, 0);
         Notification notification = new NotificationCompat.Builder(mContext, CHANNEL_ID)
