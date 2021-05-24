@@ -19,8 +19,8 @@ import com.macinternetservices.sablebusinessdirectory.R;
 import static com.bumptech.glide.load.DecodeFormat.PREFER_ARGB_8888;
 
 /**
- * Created by MAC Internet Services on 4/2/19.
- * Contact Email : admin@thesablebusinessdirectory.com
+ * Created by Panacea-Soft on 4/2/19.
+ * Contact Email : teamps.is.cool@gmail.com
  */
 
 

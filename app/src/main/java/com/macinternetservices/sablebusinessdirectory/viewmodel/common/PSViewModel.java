@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel;
 import com.macinternetservices.sablebusinessdirectory.utils.Utils;
 
 /**
- * Created by MAC Internet Services on 9/18/18.
- * Contact Email : admin@thesablebusinessdirectory.com
+ * Created by Panacea-Soft on 9/18/18.
+ * Contact Email : teamps.is.cool@gmail.com
  */
 
 

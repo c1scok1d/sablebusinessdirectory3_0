@@ -14,8 +14,8 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 
 /**
- * Created by MAC Internet Services on 12/30/17.
- * Contact Email : admin@thesablebusinessdirectory.com
+ * Created by Panacea-Soft on 12/30/17.
+ * Contact Email : teamps.is.cool@gmail.com
  */
 
 public class AboutUsViewModel extends PSViewModel {

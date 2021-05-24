@@ -1,8 +1,8 @@
 package com.macinternetservices.sablebusinessdirectory.viewobject.common;
 
 /**
- * Created by MAC Internet Services on 12/12/17.
- * Contact Email : admin@thesablebusinessdirectory.com
+ * Created by Panacea-Soft on 12/12/17.
+ * Contact Email : teamps.is.cool@gmail.com
  */
 
 public class SyncStatus {

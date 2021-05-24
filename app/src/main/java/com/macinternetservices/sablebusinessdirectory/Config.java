@@ -1,8 +1,8 @@
 package com.macinternetservices.sablebusinessdirectory;
 
 /**
- * Created by MAC Internet Services on 05/21/2021.
- * Contact Email : admin@thesablebusinessdirectory.com
+ * Created by Panacea-Soft on 7/15/15.
+ * Contact Email : teamps.is.cool@gmail.com
  */
 
 public class Config {
@@ -142,7 +142,7 @@ public class Config {
     /**
      * Policy Url
      */
-    public static String POLICY_URL = "https://www.sablebusinessdirectory.com/policy/policy.html";
+    public static String POLICY_URL = "http://www.panacea-soft.com/policy/policy.html";
 
     /**
      * Error Codes

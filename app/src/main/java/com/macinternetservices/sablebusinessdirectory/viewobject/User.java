@@ -6,8 +6,8 @@ import androidx.room.Entity;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by MAC Internet Services on 12/6/17.
- * Contact Email : admin@thesablebusinessdirectory.com
+ * Created by Panacea-Soft on 12/6/17.
+ * Contact Email : teamps.is.cool@gmail.com
  */
 
 @Entity(primaryKeys = "userId")

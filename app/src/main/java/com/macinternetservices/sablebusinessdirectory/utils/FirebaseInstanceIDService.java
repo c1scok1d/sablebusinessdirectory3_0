@@ -3,8 +3,8 @@ package com.macinternetservices.sablebusinessdirectory.utils;
 import android.content.Intent;
 
 /**
- * Created by MAC Internet Services on 8/11/16.
- * Contact Email : admin@thesablebusinessdirectory.com
+ * Created by Panacea-Soft on 8/11/16.
+ * Contact Email : teamps.is.cool@gmail.com
  */
 public class FirebaseInstanceIDService extends FirebaseMessagingService {
 

@@ -74,12 +74,12 @@ import java.net.URL;
 import javax.inject.Inject;
 
 /**
- * MainActivity of MAC Internet Services
- * Contact Email : admin@thesablebusinessdirectory.com
+ * MainActivity of Panacea-Soft
+ * Contact Email : teamps.is.cool@gmail.com
  *
- * @author MAC Internet Services
- * @version 3.0
- * @since 05/21/2021.
+ * @author Panacea-soft
+ * @version 1.0
+ * @since 11/15/17.
  */
 
 public class MainActivity extends PSAppCompactActivity {

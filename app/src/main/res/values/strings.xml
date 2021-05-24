@@ -24,7 +24,7 @@
 
 
     <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
-    <string name="floating_button_behaviour" translatable="false">com.macinternetservices.sablebusinessdirectory.utils.ScrollAwareFABBehavior</string>
+    <string name="floating_button_behaviour" translatable="false">com.panaceasoft.psmulticity.utils.ScrollAwareFABBehavior</string>
 
     <!--History -->
     <string name="history__title">History</string>
@@ -658,7 +658,7 @@
     <string name="paid__ads_in_completed">Ads Completed</string>
     <string name="paid__ads_is_not_yet_start">Ads is Not Yet Start</string>
     <string name="paid__sponsored">Sponsored</string>
-    <string name="select_city_name">Select City Name</string>
+
 
 
 </resources>

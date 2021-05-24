@@ -15,8 +15,8 @@ import com.macinternetservices.sablebusinessdirectory.utils.Objects;
 import com.macinternetservices.sablebusinessdirectory.viewobject.Item;
 
 /**
- * Created by MAC Internet Services on 05/21/2021.
- * Contact Email : admin@thesablebusinessdirectory.com
+ * Created by Panacea-Soft on 9/18/18.
+ * Contact Email : teamps.is.cool@gmail.com
  */
 
 

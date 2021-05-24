@@ -85,8 +85,8 @@ import java.util.regex.Pattern;
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
 /**
- * Created by MAC Internet Services on 05/21/2021.
- * Contact Email : admin@thesablebusinessdirectory.com
+ * Created by Panacea-Soft on 7/15/15.
+ * Contact Email : teamps.is.cool@gmail.com
  */
 
 

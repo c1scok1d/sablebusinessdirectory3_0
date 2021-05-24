@@ -16,8 +16,8 @@ import dagger.android.HasAndroidInjector;
 
 /**
  * Parent Activity class of all activity in this project.
- * Created by MAC Internet Services on 05/21/2021.
- * Contact Email : admin@thesablebusinessdirectory.com
+ * Created by Panacea-Soft on 12/2/17.
+ * Contact Email : teamps.is.cool@gmail.com
  */
 
 public abstract class PSAppCompactActivity extends AppCompatActivity implements HasAndroidInjector {

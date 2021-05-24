@@ -7,7 +7,7 @@
     <!--<data>-->
         <!--<variable-->
             <!--name="aboutUs"-->
-            <!--type="com.macinternetservices.sablebusinessdirectory.viewobject.AboutUs" />-->
+            <!--type="com.panaceasoft.mokets.viewobject.AboutUs" />-->
     <!--</data>-->
 
     <androidx.constraintlayout.widget.ConstraintLayout

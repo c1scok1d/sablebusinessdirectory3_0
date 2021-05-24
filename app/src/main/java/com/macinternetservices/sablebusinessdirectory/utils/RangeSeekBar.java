@@ -1,9 +1,9 @@
 package com.macinternetservices.sablebusinessdirectory.utils;
 
 /**
- * Created by MAC Internet Services on 3/4/18.
- * Contact Email : admin@thesablebusinessdirectory.com
- * Website : https://www.sablebusinessdirectory.com
+ * Created by Panacea-Soft on 3/4/18.
+ * Contact Email : teamps.is.cool@gmail.com
+ * Website : http://www.panacea-soft.com
  */
 
 import android.content.Context;
@@ -38,12 +38,12 @@ import java.math.BigDecimal;
  * @param <T>
  * The Number type of the range values. One of Long, Double, Integer, Float, Short, Byte or BigDecimal.
  * <p>
- * MAC Internet Services on 10/17/15.
- * Contact Email : admin@thesablebusinessdirectory.com
+ * Panacea-Soft on 10/17/15.
+ * Contact Email : teamps.is.cool@gmail.com
  */
 /**
- * MAC Internet Services on 10/17/15.
- * Contact Email : admin@thesablebusinessdirectory.com
+ * Panacea-Soft on 10/17/15.
+ * Contact Email : teamps.is.cool@gmail.com
  */
 
 
