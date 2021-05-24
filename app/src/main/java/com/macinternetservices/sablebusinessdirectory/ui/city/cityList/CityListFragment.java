@@ -64,7 +64,6 @@ public class CityListFragment extends PSFragment implements DataBoundListAdapter
 
         binding.get().setLoadingMore(connectivity.isConnected());
 
-
         return binding.get().getRoot();
     }
 
@@ -132,9 +131,14 @@ public class CityListFragment extends PSFragment implements DataBoundListAdapter
         CityAdapter nvAdapter;
         if (!getArguments().getString("Coming_From_Main").equals("")){
             cityViewModel.selectedCityId = getActivity().getIntent().getExtras().getString(Constants.CITY_ID);
-            //   nvAdapter = new CityAdapter(dataBindingComponent, city -> navigationController.navigateToItemUploadActivity(CityListFragment.this.getActivity(), city.id, city.name,getArguments().getString("Coming_From_Main")), this);
-            nvAdapter = new CityAdapter(dataBindingComponent, city -> navigationController.navigateToItemUploadActivity(CityListFragment.this.getActivity(),null, city.id,city.name),this);
+            if (getArguments().getParcelable("Edit_Upload")!=null) {
+                //   nvAdapter = new CityAdapter(dataBindingComponent, city -> navigationController.navigateToItemUploadActivity(CityListFragment.this.getActivity(), city.id, city.name,getArguments().getString("Coming_From_Main")), this);
+                nvAdapter = new CityAdapter(dataBindingComponent, city -> navigationController.navigateToItemUploadActivity(CityListFragment.this.getActivity(), getArguments().getParcelable("Edit_Upload"), city.id, city.name, ""), this);
+            }
+            else{
+                nvAdapter = new CityAdapter(dataBindingComponent, city -> navigationController.navigateToItemUploadActivity(CityListFragment.this.getActivity(), getArguments().getParcelable("Edit_Upload"), city.id, city.name, "asdasd"), this);
 
+            }
 
         }else{
             nvAdapter = new CityAdapter(dataBindingComponent, city -> navigationController.navigateToSelectedCityDetail(getActivity(), city.id, city.name,""), this);

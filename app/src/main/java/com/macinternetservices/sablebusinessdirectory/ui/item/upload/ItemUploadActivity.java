@@ -50,6 +50,9 @@ public class ItemUploadActivity extends PSAppCompactActivity {
             Bundle bundle=new Bundle();
             bundle.putString(Constants.CITY_ID,getIntent().getStringExtra(Constants.CITY_ID));
             bundle.putString(Constants.CITY_NAME,getIntent().getStringExtra(Constants.CITY_NAME));
+            if (getIntent().hasExtra("Edit_Upload")){
+                bundle.putParcelable("Edit_Upload",getIntent().getParcelableExtra("Edit_Upload"));
+            }
             fragment.setArguments(bundle);
             setupFragment(fragment);
         }else{

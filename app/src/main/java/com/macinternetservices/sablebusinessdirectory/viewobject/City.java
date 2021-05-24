@@ -1,5 +1,8 @@
 package com.macinternetservices.sablebusinessdirectory.viewobject;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
 import androidx.annotation.NonNull;
@@ -7,7 +10,7 @@ import androidx.room.Embedded;
 import androidx.room.Entity;
 
 @Entity(primaryKeys = "id")
-public class City {
+public class City implements Parcelable {
 
     @NonNull
     @SerializedName("id")
@@ -106,4 +109,71 @@ public class City {
         this.touchCount = touchCount;
     }
 
+    protected City(Parcel in) {
+        id = in.readString();
+        shippingId = in.readString();
+        name = in.readString();
+        description = in.readString();
+        phone = in.readString();
+        email = in.readString();
+        address = in.readString();
+        coordinate = in.readString();
+        lat = in.readString();
+        lng = in.readString();
+        codEmail = in.readString();
+        senderEmail = in.readString();
+        addedDate = in.readString();
+        status = in.readString();
+        isFeatured = in.readString();
+        terms = in.readString();
+        featuredDate = in.readString();
+        addedUserId = in.readString();
+        updatedDate = in.readString();
+        updatedUserId = in.readString();
+        addedDateStr = in.readString();
+        touchCount = in.readString();
+    }
+
+    public static final Creator<City> CREATOR = new Creator<City>() {
+        @Override
+        public City createFromParcel(Parcel in) {
+            return new City(in);
+        }
+
+        @Override
+        public City[] newArray(int size) {
+            return new City[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(shippingId);
+        dest.writeString(name);
+        dest.writeString(description);
+        dest.writeString(phone);
+        dest.writeString(email);
+        dest.writeString(address);
+        dest.writeString(coordinate);
+        dest.writeString(lat);
+        dest.writeString(lng);
+        dest.writeString(codEmail);
+        dest.writeString(senderEmail);
+        dest.writeString(addedDate);
+        dest.writeString(status);
+        dest.writeString(isFeatured);
+        dest.writeString(terms);
+        dest.writeString(featuredDate);
+        dest.writeString(addedUserId);
+        dest.writeString(updatedDate);
+        dest.writeString(updatedUserId);
+        dest.writeString(addedDateStr);
+        dest.writeString(touchCount);
+    }
 }

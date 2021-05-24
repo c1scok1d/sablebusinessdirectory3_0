@@ -1,5 +1,8 @@
 package com.macinternetservices.sablebusinessdirectory.viewobject;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 import androidx.room.Embedded;
 import androidx.room.Entity;
@@ -10,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 @Entity(primaryKeys = "id")
-public class Item {
+public class Item implements Parcelable {
 
     @NonNull
     @SerializedName("id")
@@ -255,5 +258,131 @@ public class Item {
         this.isPromotion = isPromotion;
         this.user = user;
         this.paidStatus = paidStatus;
+    }
+
+    protected Item(Parcel in) {
+        id = in.readString();
+        cityId = in.readString();
+        catId = in.readString();
+        subCatId = in.readString();
+        itemStatusId = in.readString();
+        name = in.readString();
+        description = in.readString();
+        searchTag = in.readString();
+        highlightInformation = in.readString();
+        isFeatured = in.readString();
+        addedDate = in.readString();
+        addedUserId = in.readString();
+        updatedDate = in.readString();
+        updatedUserId = in.readString();
+        updatedFlag = in.readString();
+        overallRating = in.readString();
+        touchCount = in.readString();
+        favouriteCount = in.readString();
+        likeCount = in.readString();
+        lat = in.readString();
+        lng = in.readString();
+        openingHour = in.readString();
+        closingHour = in.readString();
+        phone1 = in.readString();
+        phone2 = in.readString();
+        phone3 = in.readString();
+        website = in.readString();
+        facebook = in.readString();
+        google_plus = in.readString();
+        twitter = in.readString();
+        youtube = in.readString();
+        instagram = in.readString();
+        pinterest = in.readString();
+        whatsapp = in.readString();
+        messenger = in.readString();
+        terms = in.readString();
+        cancelation_policy = in.readString();
+        additional_info = in.readString();
+        time_remark = in.readString();
+        address = in.readString();
+        addedDateStr = in.readString();
+        transStatus = in.readString();
+        isLiked = in.readString();
+        isFavourited = in.readString();
+        imageCount = in.readString();
+        commentHeaderCount = in.readString();
+        currencySymbol = in.readString();
+        currencyShortForm = in.readString();
+        email = in.readString();
+        isPromotion = in.readString();
+        paidStatus = in.readString();
+    }
+
+    public static final Creator<Item> CREATOR = new Creator<Item>() {
+        @Override
+        public Item createFromParcel(Parcel in) {
+            return new Item(in);
+        }
+
+        @Override
+        public Item[] newArray(int size) {
+            return new Item[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(cityId);
+        dest.writeString(catId);
+        dest.writeString(subCatId);
+        dest.writeString(itemStatusId);
+        dest.writeString(name);
+        dest.writeString(description);
+        dest.writeString(searchTag);
+        dest.writeString(highlightInformation);
+        dest.writeString(isFeatured);
+        dest.writeString(addedDate);
+        dest.writeString(addedUserId);
+        dest.writeString(updatedDate);
+        dest.writeString(updatedUserId);
+        dest.writeString(updatedFlag);
+        dest.writeString(overallRating);
+        dest.writeString(touchCount);
+        dest.writeString(favouriteCount);
+        dest.writeString(likeCount);
+        dest.writeString(lat);
+        dest.writeString(lng);
+        dest.writeString(openingHour);
+        dest.writeString(closingHour);
+        dest.writeString(phone1);
+        dest.writeString(phone2);
+        dest.writeString(phone3);
+        dest.writeString(website);
+        dest.writeString(facebook);
+        dest.writeString(google_plus);
+        dest.writeString(twitter);
+        dest.writeString(youtube);
+        dest.writeString(instagram);
+        dest.writeString(pinterest);
+        dest.writeString(whatsapp);
+        dest.writeString(messenger);
+        dest.writeString(terms);
+        dest.writeString(cancelation_policy);
+        dest.writeString(additional_info);
+        dest.writeString(time_remark);
+        dest.writeString(address);
+        dest.writeString(addedDateStr);
+        dest.writeString(transStatus);
+        dest.writeString(isLiked);
+        dest.writeString(isFavourited);
+        dest.writeString(imageCount);
+        dest.writeString(commentHeaderCount);
+        dest.writeString(currencySymbol);
+        dest.writeString(currencyShortForm);
+        dest.writeString(email);
+        dest.writeString(isPromotion);
+        dest.writeString(paidStatus);
     }
 }

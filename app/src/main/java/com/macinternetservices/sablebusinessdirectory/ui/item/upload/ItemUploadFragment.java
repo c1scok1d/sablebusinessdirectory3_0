@@ -62,6 +62,7 @@ import com.macinternetservices.sablebusinessdirectory.utils.Utils;
 import com.macinternetservices.sablebusinessdirectory.viewmodel.image.ImageViewModel;
 import com.macinternetservices.sablebusinessdirectory.viewmodel.item.ItemViewModel;
 import com.macinternetservices.sablebusinessdirectory.viewobject.Image;
+import com.macinternetservices.sablebusinessdirectory.viewobject.Item;
 import com.macinternetservices.sablebusinessdirectory.viewobject.common.Resource;
 
 import java.io.IOException;
@@ -174,7 +175,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
 
         }*/
         binding.get().cityTextView1.setOnClickListener(v -> {
-            navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_CITY, itemViewModel.cityId, "");
+            navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_CITY, itemViewModel.cityId, "","asdad",getArguments().getParcelable("Edit_Upload"));
         });
         // for category
         binding.get().categoryTextView.setOnClickListener(v -> {
@@ -182,7 +183,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                 psDialogMsg.showWarningDialog("Select City", getString(R.string.app__ok));
                 psDialogMsg.show();
             } else {
-                navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_CATEGORY, itemViewModel.catSelectId, "");
+                navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_CATEGORY, itemViewModel.catSelectId, "","asdad",getArguments().getParcelable("Edit_Upload"));
             }
         });
 
@@ -193,12 +194,12 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                 psDialogMsg.showWarningDialog(getString(R.string.error_message__choose_category), getString(R.string.app__ok));
                 psDialogMsg.show();
             } else {
-                navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_SUBCATEGORY, itemViewModel.subCatSelectId, itemViewModel.catSelectId);
+                navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_SUBCATEGORY, itemViewModel.subCatSelectId, itemViewModel.catSelectId,"asdad",getArguments().getParcelable("Edit_Upload"));
             }
         });
 
         //region for status
-        binding.get().statusTextView.setOnClickListener(v -> navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_STATUS, itemViewModel.statusSelectId, ""));
+        binding.get().statusTextView.setOnClickListener(v -> navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_STATUS, itemViewModel.statusSelectId, "","asdad",getArguments().getParcelable("Edit_Upload")));
 
         // for openTime
         binding.get().openTimeTextView.setOnClickListener(v -> openTimePicker(binding.get().openTimeTextView));
@@ -303,6 +304,132 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
         if (getArguments()!=null){
             itemViewModel.cityId = getArguments().getString(Constants.CITY_ID);
             binding.get().cityTextView1.setText( getArguments().getString(Constants.CITY_NAME));
+
+
+            if (getArguments().getParcelable("Edit_Upload")!=null ){
+
+                Item result=getArguments().getParcelable("Edit_Upload");
+                binding.get().itemNameEditText.setText(result.name);
+                binding.get().categoryTextView.setText(result.category.name);
+                binding.get().subCatTextView.setText(result.subCategory.name);
+                binding.get().cityTextView1.setText(result.city.name);
+                binding.get().itemDescriptionTextView.setText(result.description);
+                binding.get().searchTagEditText.setText(result.searchTag);
+                binding.get().itemHighlightInformationTextView.setText(result.highlightInformation);
+                //binding.get().latitudeTextView.setText(result.data.lat);
+                //binding.get().longitudeTextView.setText(result.data.lng);
+                binding.get().openTimeTextView.setText(result.openingHour);
+                binding.get().closeTimeTextView.setText(result.closingHour);
+                binding.get().phoneOneTextView.setText(result.phone1);
+                binding.get().phoneTwoTextView.setText(result.phone2);
+                binding.get().phoneThreeTextView.setText(result.phone3);
+                binding.get().emailTextView.setText(result.email);
+                binding.get().txtAutocomplete.setText(result.address);
+                binding.get().facebookTextView.setText(result.facebook);
+                binding.get().googlePlusTextView.setText(result.google_plus);
+                binding.get().twitterTextView.setText(result.twitter);
+                binding.get().youtubeTextView.setText(result.youtube);
+                binding.get().instagrmTextView.setText(result.instagram);
+                binding.get().pinterestTextView.setText(result.pinterest);
+                binding.get().websiteTextView.setText(result.website);
+                binding.get().whatappsTextView.setText(result.whatsapp);
+                binding.get().messangerTextView2.setText(result.messenger);
+                binding.get().timeRemarkTextView.setText(result.time_remark);
+                binding.get().termsAndConditionTextView.setText(result.terms);
+                binding.get().cancelationTextView.setText(result.cancelation_policy);
+                binding.get().additionalTextView.setText(result.additional_info);
+
+                if (result.itemStatusId.equals("1")) {
+                    binding.get().statusTextView.setText(Constants.CHECKED_PUBLISH);
+
+                } else if (result.itemStatusId.equals("0")) {
+                    binding.get().statusTextView.setText(Constants.CHECKED_UNPUBLISH);
+
+                }
+//                            else if(result.data.itemStatusId.equals("2")){
+//                                binding.get().statusTextView.setText(Constants.CHECKED_PENDING);
+//                                itemViewModel.savedStatusSelectedId = result.data.itemStatusId;
+//
+//                            }else if(result.data.itemStatusId.equals("3")){
+//                                binding.get().statusTextView.setText(Constants.CHECKED_REJECT);
+//                                itemViewModel.savedStatusSelectedId = result.data.itemStatusId;
+//
+//                            }
+
+//                            binding.get().statusTextView.setText(result.data.itemStatusId);
+
+                itemViewModel.catSelectId = result.catId;
+                itemViewModel.subCatSelectId = result.subCatId;
+                itemViewModel.img_desc = result.defaultPhoto.imgDesc;
+                itemViewModel.img_id = result.defaultPhoto.imgId;
+                itemViewModel.img_path = result.defaultPhoto.imgPath;
+
+                itemViewModel.savedItemName = result.name;
+                itemViewModel.savedCategoryName = result.category.name;
+                itemViewModel.savedSubCategoryName = result.subCategory.name;
+                itemViewModel.savedCityId = result.cityId;
+                itemViewModel.savedDescription = result.description;
+                itemViewModel.savedSearchTag = result.searchTag;
+                itemViewModel.savedHighLightInformation = result.highlightInformation;
+                itemViewModel.lat = result.lat;
+                itemViewModel.lng = result.lng;
+                itemViewModel.savedOpeningHour = result.openingHour;
+                itemViewModel.savedClosingHour = result.closingHour;
+                itemViewModel.savedPhoneOne = result.phone1;
+                itemViewModel.savedPhoneTwo = result.phone2;
+                itemViewModel.savedPhoneThree = result.phone3;
+                itemViewModel.savedEmail = result.email;
+                itemViewModel.savedAddress = result.address;
+                itemViewModel.savedFacebook = result.facebook;
+                itemViewModel.savedGooglePlus = result.google_plus;
+                itemViewModel.savedTwitter = result.twitter;
+                itemViewModel.savedYoutube = result.youtube;
+                itemViewModel.savedInstagram = result.instagram;
+                itemViewModel.savedPinterest = result.pinterest;
+                itemViewModel.savedWebsite = result.website;
+                itemViewModel.savedWhatsapp = result.whatsapp;
+                itemViewModel.savedMessenger = result.messenger;
+                itemViewModel.savedTimeRemark = result.time_remark;
+                itemViewModel.savedTerms = result.terms;
+                itemViewModel.savedCancelationPolicy = result.cancelation_policy;
+                itemViewModel.savedAdditionalInfo = result.additional_info;
+//                            itemViewModel.savedStatusSelectedId = result.data.itemStatusId;
+
+                if (result.isFeatured.equals("1")) {
+                    binding.get().isFeature.setChecked(true);
+                    itemViewModel.savedIsFeatured = true;
+                } else if (result.isFeatured.equals("0")) {
+                    binding.get().isFeature.setChecked(false);
+                    itemViewModel.savedIsFeatured = false;
+                }
+
+                if (result.isPromotion.equals("1")) {
+                    binding.get().isPromotion.setChecked(true);
+                    itemViewModel.savedIsPromotion = true;
+                } else if (result.isPromotion.equals("0")) {
+                    binding.get().isPromotion.setChecked(false);
+                    itemViewModel.savedIsPromotion = false;
+                }
+
+                switch (result.itemStatusId) {
+                    case "1":
+                        binding.get().statusTextView.setText(Constants.CHECKED_PUBLISH);
+                        itemViewModel.savedStatusSelectedId = Constants.CHECKED_PUBLISH;
+                        break;
+                    case "0":
+                        binding.get().statusTextView.setText(Constants.CHECKED_UNPUBLISH);
+                        itemViewModel.savedStatusSelectedId = Constants.CHECKED_UNPUBLISH;
+                        break;
+                    case "2":
+                    case "3":
+                        pendingOrRejectItem(result.itemStatusId);
+//                                itemViewModel.savedStatusSelectedId = result.data.itemStatusId;
+                        break;
+                }
+                changeCamera();
+
+                itemViewModel.setLoadingState(false);
+            }
         }
     }
 
@@ -407,7 +534,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                             binding.get().itemNameEditText.setText(result.data.name);
                             binding.get().categoryTextView.setText(result.data.category.name);
                             binding.get().subCatTextView.setText(result.data.subCategory.name);
-                            binding.get().cityTextView1.setText(result.data.cityId);
+                            binding.get().cityTextView1.setText(result.data.city.name);
                             binding.get().itemDescriptionTextView.setText(result.data.description);
                             binding.get().searchTagEditText.setText(result.data.searchTag);
                             binding.get().itemHighlightInformationTextView.setText(result.data.highlightInformation);
@@ -507,7 +634,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                             binding.get().itemNameEditText.setText(result.data.name);
                             binding.get().categoryTextView.setText(result.data.category.name);
                             binding.get().subCatTextView.setText(result.data.subCategory.name);
-                            binding.get().cityTextView1.setText(result.data.cityId);
+                            binding.get().cityTextView1.setText(result.data.city.name);
                             binding.get().itemDescriptionTextView.setText(result.data.description);
                             binding.get().searchTagEditText.setText(result.data.searchTag);
                             binding.get().itemHighlightInformationTextView.setText(result.data.highlightInformation);

@@ -6,6 +6,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.TextUtils;
 
 import androidx.fragment.app.FragmentActivity;
@@ -958,12 +959,15 @@ public class NavigationController {
         }
     }
 
-    public void navigateToExpandActivity(Activity activity, int flag, String selectId, String Id) {
+    public void navigateToExpandActivity(Activity activity, int flag, String selectId, String Id,String Edit_Upload,Item item) {
         Intent intent = new Intent(activity, SelectionActivity.class);
         intent.putExtra(Constants.FLAG, flag);
         if (flag == Constants.SELECT_CITY) {
             intent.putExtra(Constants.CITY_ID, selectId);
             intent.putExtra("Coming_From_Main", "1");
+            if (!Edit_Upload.equals("")) {
+                intent.putExtra("Edit_Upload", item);
+            }
         }
         if (flag == Constants.SELECT_CATEGORY) {
             intent.putExtra(Constants.CATEGORY_ID, selectId);
@@ -1081,15 +1085,22 @@ public class NavigationController {
         activity.setResult(Constants.RESULT_CODE_FROM_MAP_VIEW, intent);
     }
 
-    public void navigateToItemUploadActivity(Activity activity, Item itemList,String city_id,String city_name) {
+    public void navigateToItemUploadActivity(Activity activity, Item itemList,String city_id,String city_name,String Edit_Upload) {
         Intent intent = new Intent(activity, ItemUploadActivity.class);
         if (itemList != null) {
             intent.putExtra(Constants.ITEM_ID, itemList.id);
             intent.putExtra(Constants.ITEM_NAME, itemList.name);
+            intent.putExtra(Constants.CITY_ID,city_id);
+            intent.putExtra(Constants.CITY_NAME,city_name);
+            if (!Edit_Upload.equals("")) {
+                intent.putExtra("Edit_Upload",itemList);
+            }
+
         }else{
             if (!TextUtils.isEmpty(city_id) && !TextUtils.isEmpty(city_name))
                 intent.putExtra(Constants.CITY_ID,city_id);
             intent.putExtra(Constants.CITY_NAME,city_name);
+
         }
         activity.startActivity(intent);
     }

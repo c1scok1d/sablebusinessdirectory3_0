@@ -114,7 +114,7 @@ public class SelectionActivity extends PSAppCompactActivity {
     public void onBackPressed() {
         super.onBackPressed();
         /*  if (flagType == Constants.SELECT_CITY){*/
-        navigationController.navigateToItemUploadActivity(this,null,"","");
+        navigationController.navigateToItemUploadActivity(this,null,"","","");
         //    }
     }
 }

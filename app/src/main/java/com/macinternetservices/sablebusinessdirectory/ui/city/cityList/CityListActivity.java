@@ -74,6 +74,9 @@ public class CityListActivity extends PSAppCompactActivity {
                 CityListFragment fragment=new CityListFragment();
                 Bundle bundle=new Bundle();
                 bundle.putString("Coming_From_Main",getIntent().getStringExtra("Coming_From_Main"));
+                if (getIntent().hasExtra("Edit_Upload")){
+                    bundle.putParcelable("Edit_Upload",getIntent().getExtras().getParcelable("Edit_Upload"));
+                }
                 fragment.setArguments(bundle);
 
                 this.getSupportFragmentManager().beginTransaction()
