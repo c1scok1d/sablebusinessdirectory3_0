@@ -167,7 +167,7 @@ public class ItemUploadedListFragment extends PSFragment implements DataBoundLis
         ItemUploadedAdapter nvAdapter = new ItemUploadedAdapter(dataBindingComponent, new ItemUploadedAdapter.ItemListClickCallback() {
             @Override
             public void onClick(Item item) {
-                navigationController.navigateToItemUploadActivity(ItemUploadedListFragment.this.getActivity(), item,"","","");
+                navigationController.navigateToItemUploadActivity(ItemUploadedListFragment.this.getActivity(), item,"","");
             }
 
             @Override

@@ -1,9 +1,15 @@
 <component name="libraryTable">
   <library name="Gradle: com.mikepenz:iconics-core:2.9.1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d2be28a1910f8f23ecdabbc1b620a2b4/jetified-iconics-core-2.9.1/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3ec2050e025b282008463b0d1363b0b1/jetified-iconics-core-2.9.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3ec2050e025b282008463b0d1363b0b1/jetified-iconics-core-2.9.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3ec2050e025b282008463b0d1363b0b1/jetified-iconics-core-2.9.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e2fe80626144de8377fbaba93dd6afd2/jetified-iconics-core-2.9.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e2fe80626144de8377fbaba93dd6afd2/jetified-iconics-core-2.9.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e2fe80626144de8377fbaba93dd6afd2/jetified-iconics-core-2.9.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d2be28a1910f8f23ecdabbc1b620a2b4/jetified-iconics-core-2.9.1/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d2be28a1910f8f23ecdabbc1b620a2b4/jetified-iconics-core-2.9.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d2be28a1910f8f23ecdabbc1b620a2b4/jetified-iconics-core-2.9.1/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mikepenz/iconics-core/2.9.1/501821ddf828537db3cb79a4412002b56d702252/iconics-core-2.9.1-javadoc.jar!/" />

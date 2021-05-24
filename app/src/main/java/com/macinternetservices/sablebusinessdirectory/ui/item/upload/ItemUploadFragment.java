@@ -76,7 +76,9 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 public class ItemUploadFragment extends PSFragment implements DataBoundListAdapter.DiffUtilDispatchedInterface, OnMapReadyCallback {
 
     //region Variables
+
     private final androidx.databinding.DataBindingComponent dataBindingComponent = new FragmentDataBindingComponent(this);
+
 
     private ItemViewModel itemViewModel;
     private ImageViewModel imageViewModel;
@@ -95,6 +97,8 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
     private AutoClearedValue<ItemEntryImageAdapter> itemEntryImageAdapter;
     private PlaceArrayAdapter mAutoCompleteAdapter;
 
+
+
     private Calendar dateTime = Calendar.getInstance();
     //endregion
 
@@ -104,9 +108,8 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
 
         binding.get().mapView.onResume();
         binding.get().mapView.getMapAsync(this);
-
-
     }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -117,7 +120,6 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
         binding.get().mapView.onCreate(savedInstanceState);
 
         return binding.get().getRoot();
-
     }
 
     @Override
@@ -173,7 +175,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
 
         }*/
         binding.get().cityTextView1.setOnClickListener(v -> {
-            navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_CITY, itemViewModel.cityId, "","",null);
+            navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_CITY, itemViewModel.cityId, "");
         });
         // for category
         binding.get().categoryTextView.setOnClickListener(v -> {
@@ -181,7 +183,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                 psDialogMsg.showWarningDialog("Select City", getString(R.string.app__ok));
                 psDialogMsg.show();
             } else {
-                navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_CATEGORY, itemViewModel.catSelectId, "","",null);
+                navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_CATEGORY, itemViewModel.catSelectId, "");
             }
         });
 
@@ -192,12 +194,12 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                 psDialogMsg.showWarningDialog(getString(R.string.error_message__choose_category), getString(R.string.app__ok));
                 psDialogMsg.show();
             } else {
-                navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_SUBCATEGORY, itemViewModel.subCatSelectId, itemViewModel.catSelectId,"",null);
+                navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_SUBCATEGORY, itemViewModel.subCatSelectId, itemViewModel.catSelectId);
             }
         });
 
         //region for status
-        binding.get().statusTextView.setOnClickListener(v -> navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_STATUS, itemViewModel.statusSelectId, "1","",null));
+        binding.get().statusTextView.setOnClickListener(v -> navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_STATUS, itemViewModel.statusSelectId, "1"));
 
         // for openTime
         binding.get().openTimeTextView.setOnClickListener(v -> openTimePicker(binding.get().openTimeTextView));

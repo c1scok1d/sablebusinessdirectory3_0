@@ -729,6 +729,8 @@ public class NavigationController {
         intent.putExtra(Constants.ITEM_ID, itemId);
         intent.putExtra(Constants.CITY_ID, cityId);
 
+        intent.putExtra(Constants.ITEM_ID, itemId);
+        intent.putExtra(Constants.ITEM_NAME, itemName);
 
         fragmentActivity.startActivity(intent);
     }
