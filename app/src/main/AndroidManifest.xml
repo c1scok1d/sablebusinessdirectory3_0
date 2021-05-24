@@ -38,7 +38,7 @@
         android:requestLegacyExternalStorage="true"
         android:theme="@style/Base.PSTheme"
         tools:replace="android:label">
-        <activity android:name="com.macinternetservices.sablebusinessdirectory.ui.item.user_item.LoginUserItemListActivity"></activity>
+        <activity android:name="com.macinternetservices.sablebusinessdirectory.ui.item.user_item.LoginUserItemListActivity" />
         <activity android:name="com.macinternetservices.sablebusinessdirectory.ui.privacypolicy.PrivacyPolicyActivity" />
         <activity
             android:name="com.macinternetservices.sablebusinessdirectory.ui.apploading.AppLoadingActivity"

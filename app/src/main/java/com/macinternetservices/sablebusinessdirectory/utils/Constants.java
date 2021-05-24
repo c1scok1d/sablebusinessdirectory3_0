@@ -1,8 +1,8 @@
 package com.macinternetservices.sablebusinessdirectory.utils;
 
 /**
- * Created by Panacea-Soft on 3/19/19.
- * Contact Email : teamps.is.cool@gmail.com
+ * Created by MAC Internet Services on 05/21/2021.
+ * Contact Email : admin@thesablebusinessdirectory.com
  */
 
 
@@ -374,7 +374,7 @@ public interface Constants {
     String EMAILAUTH = "password"; // don't change
     String FACEBOOKAUTH = "facebook.com"; // don't change
     String GOOGLEAUTH = "google.com"; // don't change
-    String DEFAULTEMAIL = "admin@panaceasoft.com"; // don't change
-    String DEFAULTPASSWORD = "admin@panaceasoft.com"; // don't change
+    String DEFAULTEMAIL = "admin@thesablebusinessdirectory.com"; // don't change
+    String DEFAULTPASSWORD = "admin@thesablebusinessdirectory.com"; // don't change
 }
 

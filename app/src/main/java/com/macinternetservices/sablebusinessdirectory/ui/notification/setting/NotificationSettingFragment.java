@@ -106,9 +106,9 @@ public class NotificationSettingFragment extends PSFragment {
 
             }else{
                 preferences.edit().putBoolean(Constants.GEO_SERVICE_KEY,false).apply();
-                if (isMyServiceRunning(GeolocationService.class)){
+                //if (isMyServiceRunning(GeolocationService.class)){
                     getContext().stopService(new Intent(getContext(),GeolocationService.class));
-                }
+                //}
             }
         });
     }

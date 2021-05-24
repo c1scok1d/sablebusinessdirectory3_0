@@ -112,7 +112,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/websiteTitleTextView"
                 app:textSize='@{"font_body_size"}'
-                tools:text="http://www.panacea-soft.com" />
+                tools:text="https://www.sablebusinessdirectory.com" />
 
 
             <ImageView

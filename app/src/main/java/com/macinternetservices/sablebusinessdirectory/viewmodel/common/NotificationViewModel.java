@@ -11,8 +11,8 @@ import com.macinternetservices.sablebusinessdirectory.utils.Utils;
 import javax.inject.Inject;
 
 /**
- * Created by Panacea-Soft on 1/4/18.
- * Contact Email : teamps.is.cool@gmail.com
+ * Created by MAC Internet Services on 1/4/18.
+ * Contact Email : admin@thesablebusinessdirectory.com
  */
 
 public class NotificationViewModel extends ViewModel {

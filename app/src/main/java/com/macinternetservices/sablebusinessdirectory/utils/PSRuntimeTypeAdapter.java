@@ -1,7 +1,7 @@
 package com.macinternetservices.sablebusinessdirectory.utils;
 
 /**
- * Created by Panacea-Soft on 3/21/19.
- * Contact Email : teamps.is.cool@gmail.com
+ * Created by MAC Internet Services on 3/21/19.
+ * Contact Email : admin@thesablebusinessdirectory.com
  */
 

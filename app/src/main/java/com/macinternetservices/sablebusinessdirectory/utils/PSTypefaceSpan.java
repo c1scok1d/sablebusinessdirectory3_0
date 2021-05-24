@@ -6,8 +6,8 @@ import android.text.TextPaint;
 import android.text.style.TypefaceSpan;
 
 /**
- * Created by Panacea-Soft on 8/20/15.
- * Contact Email : teamps.is.cool@gmail.com
+ * Created by MAC Internet Services on 8/20/15.
+ * Contact Email : admin@thesablebusinessdirectory.com
  */
 
 public class PSTypefaceSpan extends TypefaceSpan {

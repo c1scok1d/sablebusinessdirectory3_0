@@ -48,9 +48,15 @@ public class GeofenceReceiver extends IntentService {
                     switch (transitionType) {
                         case Geofence.GEOFENCE_TRANSITION_DWELL:
                             if (distance(gpsTracker.latitude, gpsTracker.longitude,
-                                    simpleGeofenceHashMap.getLatitude(), simpleGeofenceHashMap.getLongitude()) <= Double.parseDouble(Constants.CONST_RADIUS) && simpleGeofenceHashMap.getIsPromoted().equals("1")) { // if distance < 5 miles and isPromoted alert
+                                    simpleGeofenceHashMap.getLatitude(), simpleGeofenceHashMap.getLongitude()) <= Double.parseDouble("3") && simpleGeofenceHashMap.getIsPromoted().equals("1")) { // if distance < 5 miles and isPromoted alert
                                 transitionName = "dwell";
                                 break;
+                            } else {
+                                if (distance(gpsTracker.latitude, gpsTracker.longitude,
+                                        simpleGeofenceHashMap.getLatitude(), simpleGeofenceHashMap.getLongitude()) <= Double.parseDouble("3") && simpleGeofenceHashMap.getIsfeatured().equals("1")) { // if distance < 5 miles and isPromoted alert
+                                    transitionName = "dwell";
+                                    break;
+                                }
                             }
                         case Geofence.GEOFENCE_TRANSITION_ENTER:
                             if (distance(gpsTracker.latitude, gpsTracker.longitude,

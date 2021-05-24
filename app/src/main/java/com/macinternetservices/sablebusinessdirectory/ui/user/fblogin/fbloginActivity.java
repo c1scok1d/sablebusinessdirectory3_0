@@ -1,4 +1,4 @@
-//package com.panaceasoft.mokets.ui.user.fblogin;
+//package com.macinternetservices.sablebusinessdirectory.ui.user.fblogin;
 //
 //import android.content.Intent;
 //import android.os.Bundle;
@@ -17,7 +17,7 @@
 //import com.facebook.login.LoginResult;
 //import com.facebook.login.widget.LoginButton;
 //import com.facebook.login.widget.ProfilePictureView;
-//import com.panaceasoft.mokets.R;
+//import com.macinternetservices.sablebusinessdirectory.R;
 //
 //import org.json.JSONException;
 //import org.json.JSONObject;
@@ -38,7 +38,7 @@
 //
 ////        try {
 ////            PackageInfo info = getPackageManager().getPackageInfo(
-////                    "com.panaceasoft.mokets",
+////                    "com.macinternetservices.sablebusinessdirectory",
 ////                    PackageManager.GET_SIGNATURES);
 ////            for (Signature signature : info.signatures) {
 ////                MessageDigest md = MessageDigest.getInstance("SHA");

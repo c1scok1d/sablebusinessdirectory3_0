@@ -711,7 +711,12 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
         if (!preferences.getString(Constants.RADIUS_KEY, "").equals("All")) {
             List<Item> list = new ArrayList<>();
             for (Item item : items) {
-                if (milesDistanceBetweenPoints(Float.parseFloat(item.lat), Float.parseFloat(item.lng), Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))) <=
+                if (milesDistanceBetweenPoints(Float.parseFloat(item.lat), Float.parseFloat(item.lng),
+                        Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))) <=
+                        Double.parseDouble(preferences.getString(Constants.RADIUS_KEY, Constants.CONST_RADIUS)) && item.isFeatured.equals("1")) {
+                    list.add(item);
+                } else if (milesDistanceBetweenPoints(Float.parseFloat(item.lat), Float.parseFloat(item.lng),
+                        Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))) <=
                         Double.parseDouble(preferences.getString(Constants.RADIUS_KEY, Constants.CONST_RADIUS))) {
                     list.add(item);
                 }
@@ -722,7 +727,10 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
         }
         binding.get().executePendingBindings();
 
-        items.sort((o1, o2) -> Double.compare(milesDistanceBetweenPoints(Float.parseFloat(o1.lat), Float.parseFloat(o1.lng), Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))), milesDistanceBetweenPoints(Float.parseFloat(o2.lat), Float.parseFloat(o2.lng), Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude())))));
+        items.sort((o1, o2) -> Double.compare(milesDistanceBetweenPoints(Float.parseFloat(o1.lat), Float.parseFloat(o1.lng),
+                Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))),
+                milesDistanceBetweenPoints(Float.parseFloat(o2.lat), Float.parseFloat(o2.lng),
+                        Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude())))));
         this.featuredItemListAdapter.get().replace(items);
         binding.get().executePendingBindings();
     }
@@ -734,17 +742,18 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
                 List<Item> list = new ArrayList<>();
 
                 for (Item item : itemList) {
-
-
-                    if (milesDistanceBetweenPoints(Float.parseFloat(item.lat), Float.valueOf(item.lng), Float.valueOf(String.valueOf(gpsTracker.getLatitude())), Float.valueOf(String.valueOf(gpsTracker.getLongitude()))) <= Double.valueOf(preferences.getString(Constants.RADIUS_KEY, Constants.CONST_RADIUS))) {
+                    if (milesDistanceBetweenPoints(Float.parseFloat(item.lat), Float.parseFloat(item.lng),
+                            Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))) <=
+                            Double.parseDouble(preferences.getString(Constants.RADIUS_KEY, Constants.CONST_RADIUS))) {
                         itemList.add(item);
                     }
                 }
                 itemList.sort(new Comparator<Item>() {
                     @Override
                     public int compare(Item o1, Item o2) {
-                        return Double.valueOf(milesDistanceBetweenPoints(Float.valueOf(o1.lat), Float.valueOf(o1.lng), Float.valueOf(String.valueOf(gpsTracker.getLatitude())), Float.valueOf(String.valueOf(gpsTracker.getLongitude()))))
-                                .compareTo(Double.valueOf(milesDistanceBetweenPoints(Float.valueOf(o2.lat), Float.valueOf(o2.lng), Float.valueOf(String.valueOf(gpsTracker.getLatitude())), Float.valueOf(String.valueOf(gpsTracker.getLongitude())))));
+                        return Double.compare(milesDistanceBetweenPoints(Float.parseFloat(o1.lat), Float.parseFloat(o1.lng), Float.parseFloat(String.valueOf(gpsTracker.getLatitude())),
+                                Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))), milesDistanceBetweenPoints(Float.parseFloat(o2.lat), Float.parseFloat(o2.lng),
+                                Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))));
                     }
                 });
             }
@@ -758,9 +767,18 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
         if (!preferences.getString(Constants.RADIUS_KEY, "").equals("All")) {
             List<Item> list = new ArrayList<>();
             for (Item item : itemList) {
-                if (milesDistanceBetweenPoints(Float.parseFloat(item.lat), Float.parseFloat(item.lng), Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))) <= Double.parseDouble(preferences.getString(Constants.RADIUS_KEY, Constants.CONST_RADIUS))) {
+                if (milesDistanceBetweenPoints(Float.parseFloat(item.lat), Float.parseFloat(item.lng),
+                        Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))) <=
+                        Double.parseDouble(preferences.getString(Constants.RADIUS_KEY, Constants.CONST_RADIUS)) && item.ratingDetails.totalRatingValue >= 3 && item.isPromotion.equals("1")) {
                     itemList.add(item);
-                }
+                } else if (milesDistanceBetweenPoints(Float.parseFloat(item.lat), Float.parseFloat(item.lng),
+                        Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))) <=
+                        Double.parseDouble(preferences.getString(Constants.RADIUS_KEY, Constants.CONST_RADIUS)) && item.ratingDetails.totalRatingValue >= 3 && item.isFeatured.equals("1")) {
+                    itemList.add(item);
+                } else if (milesDistanceBetweenPoints(Float.parseFloat(item.lat), Float.parseFloat(item.lng),
+                        Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))) <=
+                Double.parseDouble(preferences.getString(Constants.RADIUS_KEY, Constants.CONST_RADIUS)))
+                itemList.add(item);
             }
             this.popularItemListAdapter.get().replace(list);
         } else {
@@ -770,7 +788,10 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
         itemList.sort(new Comparator<Item>() {
             @Override
             public int compare(Item o1, Item o2) {
-                return Double.compare(milesDistanceBetweenPoints(Float.parseFloat(o1.lat), Float.parseFloat(o1.lng), Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))), milesDistanceBetweenPoints(Float.parseFloat(o2.lat), Float.parseFloat(o2.lng), Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))));
+                return Double.compare(milesDistanceBetweenPoints(Float.parseFloat(o1.lat), Float.parseFloat(o1.lng),
+                        Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))),
+                        milesDistanceBetweenPoints(Float.parseFloat(o2.lat), Float.parseFloat(o2.lng),
+                                Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))));
             }
         });
         this.popularItemListAdapter.get().replace(itemList);
@@ -782,16 +803,21 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
         if (itemList!=null) {
             if (!preferences.getString(Constants.RADIUS_KEY, "").equals("All")) {
                 List<Item> list = new ArrayList<>();
-
                 for (Item item : itemList) {
-
-                    if (milesDistanceBetweenPoints(Float.valueOf(item.lat), Float.valueOf(item.lng), Float.valueOf(String.valueOf(gpsTracker.getLatitude())), Float.valueOf(String.valueOf(gpsTracker.getLongitude()))) <= Double.valueOf(preferences.getString(Constants.RADIUS_KEY, Constants.CONST_RADIUS))) {
+                    if (milesDistanceBetweenPoints(Float.parseFloat(item.lat), Float.parseFloat(item.lng),
+                            Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))) <=
+                            Double.parseDouble(preferences.getString(Constants.RADIUS_KEY, Constants.CONST_RADIUS)) && item.ratingDetails.totalRatingValue >=3 && item.isPromotion.equals("1")) {
                         itemList.add(item);
-                    }
+                    } else if (milesDistanceBetweenPoints(Float.parseFloat(item.lat), Float.parseFloat(item.lng),
+                            Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))) <=
+                            Double.parseDouble(preferences.getString(Constants.RADIUS_KEY, Constants.CONST_RADIUS)) && item.ratingDetails.totalRatingValue >=3 && item.isFeatured.equals("1")) {
+                        itemList.add(item);
+                    } else if (milesDistanceBetweenPoints(Float.parseFloat(item.lat), Float.parseFloat(item.lng),
+                                Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))) <=
+                        Double.parseDouble(preferences.getString(Constants.RADIUS_KEY, Constants.CONST_RADIUS)));
+                        itemList.add(item);
                 }
                 this.recentItemListAdapter.get().replace(list);
-                binding.get().executePendingBindings();
-
             } else {
                 this.recentItemListAdapter.get().replace(itemList);
             }
@@ -799,7 +825,10 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
             itemList.sort(new Comparator<Item>() {
                 @Override
                 public int compare(Item o1, Item o2) {
-                    return Double.compare(milesDistanceBetweenPoints(Float.parseFloat(o1.lat), Float.parseFloat(o1.lng), Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))), milesDistanceBetweenPoints(Float.parseFloat(o2.lat), Float.parseFloat(o2.lng), Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))));
+                    return Double.compare(milesDistanceBetweenPoints(Float.parseFloat(o1.lat), Float.parseFloat(o1.lng),
+                            Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))),
+                            milesDistanceBetweenPoints(Float.parseFloat(o2.lat), Float.parseFloat(o2.lng), Float.parseFloat(String.valueOf(gpsTracker.getLatitude())),
+                                    Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))));
                 }
             });
             this.recentItemListAdapter.get().replace(itemList);
@@ -813,26 +842,25 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
         if (cities!=null) {
             if (!preferences.getString(Constants.RADIUS_KEY, "").equals("All")) {
                 List<City> list = new ArrayList<>();
-
                 for (City citi : cities) {
-
-
-                    if (milesDistanceBetweenPoints(Float.valueOf(citi.lat), Float.valueOf(citi.lng), Float.valueOf(String.valueOf(gpsTracker.getLatitude())), Float.valueOf(String.valueOf(gpsTracker.getLongitude()))) <= Double.valueOf(preferences.getString(Constants.RADIUS_KEY, Constants.CONST_RADIUS))) {
-                        list.add(citi);
-                    }
+                    if (milesDistanceBetweenPoints(Float.parseFloat(citi.lat), Float.parseFloat(citi.lng),
+                            Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))) <=
+                            Double.parseDouble(preferences.getString(Constants.RADIUS_KEY, Constants.CONST_RADIUS)) && citi.isFeatured.equals("1"))
+                    list.add(citi);
                 }
                 this.popularCitiesAdapter.get().replace(list);
             } else {
-
                 this.popularCitiesAdapter.get().replace(cities);
             }
             binding.get().executePendingBindings();
         }
-
         cities.sort(new Comparator<City>() {
             @Override
             public int compare(City o1, City o2) {
-                return Double.compare(milesDistanceBetweenPoints(Float.parseFloat(o1.lat), Float.parseFloat(o1.lng), Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))), milesDistanceBetweenPoints(Float.parseFloat(o2.lat), Float.parseFloat(o2.lng), Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))));
+                return Double.compare(milesDistanceBetweenPoints(Float.parseFloat(o1.lat), Float.parseFloat(o1.lng),
+                        Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))),
+                        milesDistanceBetweenPoints(Float.parseFloat(o2.lat), Float.parseFloat(o2.lng),
+                                Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))));
             }
         });
         this.popularCitiesAdapter.get().replace(cities);
@@ -843,13 +871,11 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
     private void replaceFeaturedCitiesList(List<City> cities) {
         if (cities!=null) {
             if (!preferences.getString(Constants.RADIUS_KEY, "").equals("All")) {
-
                 List<City> list = new ArrayList<>();
-
                 for (City citi : cities) {
-
-
-                    if (milesDistanceBetweenPoints(Float.valueOf(citi.lat), Float.valueOf(citi.lng), Float.valueOf(String.valueOf(gpsTracker.getLatitude())), Float.valueOf(String.valueOf(gpsTracker.getLongitude()))) <= Double.valueOf(preferences.getString(Constants.RADIUS_KEY, Constants.CONST_RADIUS))) {
+                    if (milesDistanceBetweenPoints(Float.parseFloat(citi.lat), Float.parseFloat(citi.lng),
+                            Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))) <=
+                            Double.parseDouble(preferences.getString(Constants.RADIUS_KEY, Constants.CONST_RADIUS)) && citi.isFeatured.equals("1")) {
                         list.add(citi);
                     }
                 }
@@ -860,11 +886,14 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
             }
             binding.get().executePendingBindings();
         }
-
         cities.sort(new Comparator<City>() {
             @Override
             public int compare(City o1, City o2) {
-                return Double.compare(milesDistanceBetweenPoints(Float.parseFloat(o1.lat), Float.parseFloat(o1.lng), Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))), milesDistanceBetweenPoints(Float.parseFloat(o2.lat), Float.parseFloat(o2.lng), Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))));
+                return Double.compare(milesDistanceBetweenPoints(Float.parseFloat(o1.lat), Float.parseFloat(o1.lng),
+                        Float.parseFloat(String.valueOf(gpsTracker.getLatitude())),
+                        Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))),
+                        milesDistanceBetweenPoints(Float.parseFloat(o2.lat), Float.parseFloat(o2.lng),
+                                Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))));
             }
         });
 
@@ -874,35 +903,29 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
 
     @SuppressLint("NewApi")
     private void replaceRecentCitiesList(List<City> cities) {
-        cities.sort(new Comparator<City>() {
-            @Override
-            public int compare(City o1, City o2) {
-                return Double.valueOf(milesDistanceBetweenPoints(Float.valueOf(o1.lat), Float.valueOf(o1.lng), Float.valueOf(String.valueOf(gpsTracker.getLatitude())), Float.valueOf(String.valueOf(gpsTracker.getLongitude()))))
-                        .compareTo(Double.valueOf(milesDistanceBetweenPoints(Float.valueOf(o2.lat), Float.valueOf(o2.lng), Float.valueOf(String.valueOf(gpsTracker.getLatitude())), Float.valueOf(String.valueOf(gpsTracker.getLongitude())))));
-            }
-        });
+
         this.recentCitiesAdapter.get().replace(cities);
         binding.get().executePendingBindings();
         if (cities!=null) {
             if (!preferences.getString(Constants.RADIUS_KEY, "").equals("All")) {
-
                 List<City> list = new ArrayList<>();
-
                 for (City citi : cities) {
-
-
-                    if (milesDistanceBetweenPoints(Float.valueOf(citi.lat), Float.valueOf(citi.lng), Float.valueOf(String.valueOf(gpsTracker.getLatitude())), Float.valueOf(String.valueOf(gpsTracker.getLongitude()))) <= Double.valueOf(preferences.getString(Constants.RADIUS_KEY, Constants.CONST_RADIUS))) {
+                    if (milesDistanceBetweenPoints(Float.parseFloat(citi.lat), Float.parseFloat(citi.lng),
+                            Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))) <=
+                            Double.parseDouble(preferences.getString(Constants.RADIUS_KEY, Constants.CONST_RADIUS))) {
                         list.add(citi);
                     }
                 }
-
                 this.recentCitiesAdapter.get().replace(list);
-
             } else {
                 this.recentCitiesAdapter.get().replace(cities);
             }
             binding.get().executePendingBindings();
         }
+        cities.sort((o1, o2) -> Double.compare(milesDistanceBetweenPoints(Float.parseFloat(o1.lat), Float.parseFloat(o1.lng),
+                Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))),
+                milesDistanceBetweenPoints(Float.parseFloat(o2.lat), Float.parseFloat(o2.lng),
+                        Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude())))));
     }
 
     @Override

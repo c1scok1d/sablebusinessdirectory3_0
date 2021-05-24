@@ -10,8 +10,8 @@ import javax.inject.Provider;
 import javax.inject.Singleton;
 
 /**
- * Created by Panacea-Soft on 11/16/17.
- * Contact Email : teamps.is.cool@gmail.com
+ * Created by MAC Internet Services on 11/16/17.
+ * Contact Email : admin@thesablebusinessdirectory.com
  */
 
 @Singleton

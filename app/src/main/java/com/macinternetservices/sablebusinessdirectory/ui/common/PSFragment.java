@@ -20,8 +20,8 @@ import javax.inject.Inject;
 
 /**
  * Parent class for all fragment in this project.
- * Created by Panacea-Soft on 12/2/17.
- * Contact Email : teamps.is.cool@gmail.com
+ * Created by MAC Internet Services on 05/21/2021.
+ * Contact Email : admin@thesablebusinessdirectory.com
  */
 
 public abstract class   PSFragment extends Fragment implements Injectable {

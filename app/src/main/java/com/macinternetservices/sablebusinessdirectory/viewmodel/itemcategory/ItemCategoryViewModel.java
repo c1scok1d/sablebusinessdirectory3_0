@@ -18,8 +18,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 /**
- * Created by Panacea-Soft on 11/25/17.
- * Contact Email : teamps.is.cool@gmail.com
+ * Created by MAC Internet Services on 11/25/17.
+ * Contact Email : admin@thesablebusinessdirectory.com
  */
 
 public class ItemCategoryViewModel extends PSViewModel {

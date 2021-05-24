@@ -1,6 +1,5 @@
 package com.macinternetservices.sablebusinessdirectory.utils;
 
-import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -10,34 +9,20 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.MediaScannerConnection;
-import android.net.Uri;
 import android.os.Build;
-import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.provider.MediaStore;
-import android.util.Log;
 import android.widget.Toast;
-
 import androidx.core.app.NotificationCompat;
-import androidx.core.content.FileProvider;
-
 import com.google.android.gms.location.Geofence;
-import com.macinternetservices.sablebusinessdirectory.BuildConfig;
+import com.macinternetservices.sablebusinessdirectory.Config;
 import com.macinternetservices.sablebusinessdirectory.MainActivity;
 import com.macinternetservices.sablebusinessdirectory.R;
-import com.macinternetservices.sablebusinessdirectory.ui.item.detail.ItemActivity;
-import com.macinternetservices.sablebusinessdirectory.viewmodel.user.UserViewModel;
-
-import java.io.File;
+import com.macinternetservices.sablebusinessdirectory.ui.common.NavigationController;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Random;
-
-import static android.app.Activity.RESULT_OK;
-import static android.content.ContentValues.TAG;
 
 public class GeofenceNotification {
     public static final int NOTIFICATION_ID = 20;
@@ -56,8 +41,6 @@ public class GeofenceNotification {
         this.notificationManager = (NotificationManager) context
                 .getSystemService(Context.NOTIFICATION_SERVICE);
     }
-    private UserViewModel userViewModel;
-
 
     protected void buildNotificaction(SimpleGeofence simpleGeofence,
                                       int transitionType, int near) throws IOException {
@@ -97,10 +80,9 @@ public class GeofenceNotification {
                 transitionEnterNotification(context, notificationText, notificationText2);
                 break;
             case Geofence.GEOFENCE_TRANSITION_DWELL:
-                notificationText = "You are near " + simpleGeofence.getItem_name();
-                notificationText2 = "Support black business.  Stop in and say 'Hi!'";
-                //String image = simpleGeofence.getImage_id();
-                transitionDwellNotification(context, notificationText, notificationText2,simpleGeofence.getImage_id());
+                notificationText2 = "You are near " + simpleGeofence.getItem_name();
+                notificationText = "Stop in and say Hi!";
+                transitionDwellNotification(context, notificationText, notificationText2,simpleGeofence);
                 break;
 
             case Geofence.GEOFENCE_TRANSITION_EXIT:
@@ -109,6 +91,7 @@ public class GeofenceNotification {
                 transitionExitNotification(context, notificationText, notificationText2);
                 break;
         }
+
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(
                 context)
@@ -160,36 +143,37 @@ public class GeofenceNotification {
                 (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
         notifManager.notify(new Random().nextInt(), notification);
     }
-    private void transitionDwellNotification(final Context mContext,final String message, final String message2, String imageId) {
-        createNotificationChannel(mContext);
-        Intent notificationIntent = new Intent(mContext, MainActivity.class);
-        String outputFile = context.getExternalFilesDir("DirName") + imageId;
-
-        File file = new File(outputFile);
-        Log.e("OutPutFile",outputFile);
-        Uri uri = FileProvider.getUriForFile(context,
-                BuildConfig.APPLICATION_ID + ".provider",file);
-
-        Bitmap bitmap = null;
+    public static Bitmap getBitmapFromURL(String src) {
         try {
-            bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), uri);
+            URL url = new URL(src);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap myBitmap = BitmapFactory.decodeStream(input);
+            return myBitmap;
         } catch (IOException e) {
-            e.printStackTrace();
+            // Log exception
+            return null;
         }
-
+    }
+    private void transitionDwellNotification(final Context mContext,final String message, final String message2, SimpleGeofence geofence){
+        createNotificationChannel(mContext);
+        NavigationController navigationController = null;
+        Intent notificationIntent = new Intent(mContext, navigationController.navigateToSelectedItemDetail(mContext, geofence.getItem_name(), geofence.getId(), geofence.getCity_id())); //change intent to go to item detail
+        //Intent notificationIntent = new Intent(mContext, MainActivity.class);
         PendingIntent notificationTapIntent = PendingIntent.getActivity(mContext,
                 0, notificationIntent, 0);
-
         Notification notification = new NotificationCompat.Builder(mContext, CHANNEL_ID)
                 .setContentTitle(message2)
                 .setContentText(message)
                 //.setSubText("Black Owned Business Alert")
-                .setSmallIcon(R.mipmap.logo_wht_round)
-                //.setLargeIcon(bitmap) //should be item image
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setLargeIcon(getBitmapFromURL(Config.APP_IMAGES_URL + geofence.getImage_id()))
                 .setStyle(new NotificationCompat.BigPictureStyle()
-                        .bigPicture(bitmap) //should be item image
+                        .bigPicture(getBitmapFromURL(Config.APP_IMAGES_URL + geofence.getImage_id()))
                         .bigLargeIcon(null))
-                .setContentIntent(notificationTapIntent) // ontap take user to item
+                .setContentIntent(notificationTapIntent) // ontap go to item detail
                 .build();
         notification.flags |= Notification.FLAG_AUTO_CANCEL;
         NotificationManager notifManager =
