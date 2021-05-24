@@ -462,7 +462,7 @@
                             android:layout_marginTop="8dp"
                             android:layout_marginEnd="8dp"
                             android:background="@drawable/rounded_corner_shape_for_item_upload"
-                            android:hint="@string/select_city_name"
+                            android:hint="Select City"
                             android:paddingStart="@dimen/space_8"
                             android:paddingTop="@dimen/space_8"
                             android:paddingBottom="@dimen/space_8"

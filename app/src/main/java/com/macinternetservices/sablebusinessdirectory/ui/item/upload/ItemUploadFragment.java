@@ -174,7 +174,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
 
         }*/
         binding.get().cityTextView1.setOnClickListener(v -> {
-            navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_CITY, itemViewModel.cityId, "");
+            navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_CITY, itemViewModel.cityId, "","",null);
         });
         // for category
         binding.get().categoryTextView.setOnClickListener(v -> {
@@ -182,7 +182,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                 psDialogMsg.showWarningDialog("Select City", getString(R.string.app__ok));
                 psDialogMsg.show();
             } else {
-                navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_CATEGORY, itemViewModel.catSelectId, "");
+                navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_CATEGORY, itemViewModel.catSelectId, "","",null);
             }
         });
 
@@ -193,12 +193,12 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                 psDialogMsg.showWarningDialog(getString(R.string.error_message__choose_category), getString(R.string.app__ok));
                 psDialogMsg.show();
             } else {
-                navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_SUBCATEGORY, itemViewModel.subCatSelectId, itemViewModel.catSelectId);
+                navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_SUBCATEGORY, itemViewModel.subCatSelectId, itemViewModel.catSelectId,"",null);
             }
         });
 
         //region for status
-        binding.get().statusTextView.setOnClickListener(v -> navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_STATUS, itemViewModel.statusSelectId, ""));
+        binding.get().statusTextView.setOnClickListener(v -> navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_STATUS, itemViewModel.statusSelectId, "","",null));
 
         // for openTime
         binding.get().openTimeTextView.setOnClickListener(v -> openTimePicker(binding.get().openTimeTextView));
