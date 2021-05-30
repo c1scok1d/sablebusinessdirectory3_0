@@ -1,9 +1,12 @@
 package com.macinternetservices.sablebusinessdirectory.viewobject;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class RatingDetail {
+public class RatingDetail implements Parcelable {
 
     @SerializedName("five_star_count")
     public final int fiveStarCount;
@@ -54,5 +57,53 @@ public class RatingDetail {
         this.oneStarPercent = oneStarPercent;
         this.totalRatingCount = totalRatingCount;
         this.totalRatingValue = totalRatingValue;
+    }
+
+    protected RatingDetail(Parcel in) {
+        fiveStarCount = in.readInt();
+        fiveStarPercent = in.readFloat();
+        fourStarCount = in.readInt();
+        fourStarPercent = in.readFloat();
+        threeStarCount = in.readInt();
+        threeStarPercent = in.readFloat();
+        twoStarCount = in.readInt();
+        twoStarPercent = in.readFloat();
+        oneStarCount = in.readInt();
+        oneStarPercent = in.readFloat();
+        totalRatingCount = in.readInt();
+        totalRatingValue = in.readFloat();
+    }
+
+    public static final Creator<RatingDetail> CREATOR = new Creator<RatingDetail>() {
+        @Override
+        public RatingDetail createFromParcel(Parcel in) {
+            return new RatingDetail(in);
+        }
+
+        @Override
+        public RatingDetail[] newArray(int size) {
+            return new RatingDetail[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(fiveStarCount);
+        dest.writeFloat(fiveStarPercent);
+        dest.writeInt(fourStarCount);
+        dest.writeFloat(fourStarPercent);
+        dest.writeInt(threeStarCount);
+        dest.writeFloat(threeStarPercent);
+        dest.writeInt(twoStarCount);
+        dest.writeFloat(twoStarPercent);
+        dest.writeInt(oneStarCount);
+        dest.writeFloat(oneStarPercent);
+        dest.writeInt(totalRatingCount);
+        dest.writeFloat(totalRatingValue);
     }
 }

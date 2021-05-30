@@ -21,6 +21,10 @@ import com.macinternetservices.sablebusinessdirectory.ui.common.PSAppCompactActi
 import com.macinternetservices.sablebusinessdirectory.utils.Constants;
 import com.macinternetservices.sablebusinessdirectory.utils.MyContextWrapper;
 import com.macinternetservices.sablebusinessdirectory.utils.Utils;
+import com.macinternetservices.sablebusinessdirectory.viewobject.City;
+import com.macinternetservices.sablebusinessdirectory.viewobject.Item;
+import com.macinternetservices.sablebusinessdirectory.viewobject.ItemCategory;
+import com.macinternetservices.sablebusinessdirectory.viewobject.ItemSubCategory;
 
 public class CityListActivity extends PSAppCompactActivity {
     BroadcastReceiver receiver=new BroadcastReceiver() {
@@ -74,9 +78,11 @@ public class CityListActivity extends PSAppCompactActivity {
                 CityListFragment fragment=new CityListFragment();
                 Bundle bundle=new Bundle();
                 bundle.putString("Coming_From_Main",getIntent().getStringExtra("Coming_From_Main"));
-                if (getIntent().hasExtra("Edit_Upload")){
-                    bundle.putParcelable("Edit_Upload",getIntent().getExtras().getParcelable("Edit_Upload"));
-                }
+                bundle.putParcelable("CITY", getIntent().getParcelableExtra("CITY"));
+                bundle.putParcelable("CAT", getIntent().getParcelableExtra("CAT"));
+                bundle.putParcelable("SUB_CAT", getIntent().getParcelableExtra("SUB_CAT"));
+                bundle.putParcelable("ITEM", getIntent().getParcelableExtra("ITEM"));
+                bundle.putParcelable("IMG", getIntent().getParcelableExtra("IMG"));
                 fragment.setArguments(bundle);
 
                 this.getSupportFragmentManager().beginTransaction()
@@ -87,12 +93,16 @@ public class CityListActivity extends PSAppCompactActivity {
             }
         }else {
             try{
-                CityListFragment fragment=new CityListFragment();
+                Fragment fragment=new CityListFragment();
                 Bundle bundle=new Bundle();
-                bundle.putString("Coming_From_Main","");
+               // bundle.putString("Coming_From_Main","");
+                bundle.putParcelable("CITY", getIntent().getParcelableExtra("CITY"));
+                bundle.putParcelable("CAT", getIntent().getParcelableExtra("CAT"));
+                bundle.putParcelable("SUB_CAT", getIntent().getParcelableExtra("SUB_CAT"));
+                bundle.putParcelable("ITEM", getIntent().getParcelableExtra("ITEM"));
+                bundle.putParcelable("IMG", getIntent().getParcelableExtra("IMG"));
                 fragment.setArguments(bundle);
-
-                this.getSupportFragmentManager().beginTransaction()
+                getSupportFragmentManager().beginTransaction()
                         .replace(R.id.content_frame,fragment)
                         .commitAllowingStateLoss();
             } catch (Exception e) {

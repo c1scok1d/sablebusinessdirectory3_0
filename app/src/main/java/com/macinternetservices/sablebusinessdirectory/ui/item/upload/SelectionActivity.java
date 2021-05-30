@@ -19,6 +19,7 @@ import com.macinternetservices.sablebusinessdirectory.Config;
 import com.macinternetservices.sablebusinessdirectory.R;
 import com.macinternetservices.sablebusinessdirectory.databinding.ActivitySelectionBinding;
 import com.macinternetservices.sablebusinessdirectory.ui.category.categoryselection.CategorySelectionFragment;
+import com.macinternetservices.sablebusinessdirectory.ui.city.cityList.CityListActivity;
 import com.macinternetservices.sablebusinessdirectory.ui.city.cityList.CityListFragment;
 import com.macinternetservices.sablebusinessdirectory.ui.common.PSAppCompactActivity;
 import com.macinternetservices.sablebusinessdirectory.ui.status.StatusSelectionFragment;
@@ -27,6 +28,11 @@ import com.macinternetservices.sablebusinessdirectory.utils.Constants;
 import com.macinternetservices.sablebusinessdirectory.utils.MyContextWrapper;
 import com.macinternetservices.sablebusinessdirectory.utils.Utils;
 import com.macinternetservices.sablebusinessdirectory.viewmodel.city.PopularCitiesViewModel;
+import com.macinternetservices.sablebusinessdirectory.viewobject.City;
+import com.macinternetservices.sablebusinessdirectory.viewobject.Image;
+import com.macinternetservices.sablebusinessdirectory.viewobject.Item;
+import com.macinternetservices.sablebusinessdirectory.viewobject.ItemCategory;
+import com.macinternetservices.sablebusinessdirectory.viewobject.ItemSubCategory;
 
 import java.util.Objects;
 
@@ -102,7 +108,20 @@ public class SelectionActivity extends PSAppCompactActivity {
             initToolbar(binding.toolbar, "Status List");
         } else if (flagType == Constants.SELECT_CITY) {
 
-            navigationController.navigateToCityListNew(this, popularCitiesViewModel.popularCitiesParameterHolder, getString(R.string.dashboard_popular_cities));
+          //  navigationController.navigateToCityListNew(this, popularCitiesViewModel.popularCitiesParameterHolder, getString(R.string.dashboard_popular_cities));
+
+            Intent intent = new Intent(this, CityListActivity.class);
+
+            intent.putExtra(Constants.CITY_HOLDER, popularCitiesViewModel.popularCitiesParameterHolder);
+            intent.putExtra(Constants.CITY_TITLE, getString(R.string.dashboard_popular_cities));
+            intent.putExtra("Coming_From_Main", "1");
+            intent.putExtra("ITEM",(Item)getIntent().getExtras().getParcelable("ITEM"));
+            intent.putExtra("CITY",(City)getIntent().getExtras().getParcelable("CITY"));
+            intent.putExtra("CAT",(ItemCategory)getIntent().getExtras().getParcelable("CAT"));
+            intent.putExtra("SUB_CAT",(ItemSubCategory)getIntent().getExtras().getParcelable("SUB_CAT"));
+            intent.putExtra("IMG",(Image)getIntent().getExtras().getParcelable("IMG"));
+            startActivity(intent);
+           // startActivityForResult(intent,1212);
           /*  CityListFragment cityListFragment = new CityListFragment();
             setupFragment(cityListFragment);
             initToolbar(binding.toolbar, "City List");*/
@@ -114,7 +133,9 @@ public class SelectionActivity extends PSAppCompactActivity {
     public void onBackPressed() {
         super.onBackPressed();
         /*  if (flagType == Constants.SELECT_CITY){*/
-        navigationController.navigateToItemUploadActivity(this,null,"","","");
+        navigationController.navigateToItemUploadActivity(this,(Item)getIntent().getExtras().getParcelable("ITEM"),"",""
+                ,(City)getIntent().getExtras().getParcelable("CITY"),(ItemCategory)getIntent().getExtras().getParcelable("CAT"),
+                (ItemSubCategory)getIntent().getExtras().getParcelable("SUB_CAT"),(Image) getIntent().getExtras().getParcelable("IMG"));
         //    }
     }
 }

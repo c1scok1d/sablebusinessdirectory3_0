@@ -76,7 +76,8 @@ public class ItemUploadedListFragment extends PSFragment implements DataBoundLis
         if (item.getItemId() == R.id.clearButton) {
             Utils.psLog("I am here for ok Button");
 
-            navigationController.navigateToItemUploadActivity(getActivity(),null,"","","");
+            navigationController.navigateToItemUploadActivity(getActivity(),null,"","",null,
+                    null,null,null);
             itemViewModel.loadingDirection = Utils.LoadingDirection.top;
         }
         return super.onOptionsItemSelected(item);
@@ -167,7 +168,11 @@ public class ItemUploadedListFragment extends PSFragment implements DataBoundLis
         ItemUploadedAdapter nvAdapter = new ItemUploadedAdapter(dataBindingComponent, new ItemUploadedAdapter.ItemListClickCallback() {
             @Override
             public void onClick(Item item) {
-                navigationController.navigateToItemUploadActivity(ItemUploadedListFragment.this.getActivity(), item,"","","");
+
+                navigationController.navigateToItemUploadActivity(ItemUploadedListFragment.this.getActivity(), item,"","",
+                        item.city,item.category,item.subCategory,item.defaultPhoto);
+
+
             }
 
             @Override

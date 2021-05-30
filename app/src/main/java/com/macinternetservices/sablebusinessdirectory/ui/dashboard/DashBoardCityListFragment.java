@@ -164,7 +164,8 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
         psDialogMsg = new PSDialogMsg(getActivity(), false);
 
         binding.get().floatingActionButton.setOnClickListener(view ->{
-            navigationController.navigateToItemUploadActivity(getActivity(),null,"","","");
+            navigationController.navigateToItemUploadActivity(getActivity(),null,"","",null,
+                    null,null,null);
             //   navigationController.navigateToItemUpdated((MainActivity)getActivity());
        /*     pref.edit().putString(Constants.CITY_ID,Constants.EMPTY_STRING).apply();
             Utils.navigateOnUserVerificationActivity(userIdToVerify, loginUserId, psDialogMsg, getActivity(), navigationController, () ->
@@ -800,7 +801,7 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
 
     @SuppressLint("NewApi")
     private void replaceRecentItemList(List<Item> itemList) {
-        if (itemList!=null) {
+      /*  if (itemList!=null) {
             if (!preferences.getString(Constants.RADIUS_KEY, "").equals("All")) {
                 List<Item> list = new ArrayList<>();
                 for (Item item : itemList) {
@@ -833,7 +834,7 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
             });
             this.recentItemListAdapter.get().replace(itemList);
             binding.get().executePendingBindings();
-        }
+        }*/
     }
 
 

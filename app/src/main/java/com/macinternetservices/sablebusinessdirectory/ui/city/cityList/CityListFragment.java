@@ -35,6 +35,10 @@ import com.macinternetservices.sablebusinessdirectory.utils.Constants;
 import com.macinternetservices.sablebusinessdirectory.utils.Utils;
 import com.macinternetservices.sablebusinessdirectory.viewmodel.city.CityViewModel;
 import com.macinternetservices.sablebusinessdirectory.viewobject.City;
+import com.macinternetservices.sablebusinessdirectory.viewobject.Image;
+import com.macinternetservices.sablebusinessdirectory.viewobject.Item;
+import com.macinternetservices.sablebusinessdirectory.viewobject.ItemCategory;
+import com.macinternetservices.sablebusinessdirectory.viewobject.ItemSubCategory;
 import com.macinternetservices.sablebusinessdirectory.viewobject.common.Status;
 import com.macinternetservices.sablebusinessdirectory.viewobject.holder.CityParameterHolder;
 
@@ -53,6 +57,11 @@ public class CityListFragment extends PSFragment implements DataBoundListAdapter
     @VisibleForTesting
     private AutoClearedValue<FragmentCityListBinding> binding;
     private AutoClearedValue<CityAdapter> cityAdapter;
+    Item item;
+    City city;
+    Image def_img;
+    ItemCategory itemCategory;
+    ItemSubCategory itemSubCategory;
 
     @Nullable
     @Override
@@ -63,6 +72,11 @@ public class CityListFragment extends PSFragment implements DataBoundListAdapter
         binding = new AutoClearedValue<>(this, dataBinding);
 
         binding.get().setLoadingMore(connectivity.isConnected());
+       item= getArguments().getParcelable("ITEM");
+        city=getArguments().getParcelable("CITY");
+        itemCategory=getArguments().getParcelable("CAT");
+        itemSubCategory=getArguments().getParcelable("SUB_CAT");
+        def_img=getArguments().getParcelable("IMG");
 
         return binding.get().getRoot();
     }
@@ -131,14 +145,9 @@ public class CityListFragment extends PSFragment implements DataBoundListAdapter
         CityAdapter nvAdapter;
         if (!getArguments().getString("Coming_From_Main").equals("")){
             cityViewModel.selectedCityId = getActivity().getIntent().getExtras().getString(Constants.CITY_ID);
-            if (getArguments().getParcelable("Edit_Upload")!=null) {
-                //   nvAdapter = new CityAdapter(dataBindingComponent, city -> navigationController.navigateToItemUploadActivity(CityListFragment.this.getActivity(), city.id, city.name,getArguments().getString("Coming_From_Main")), this);
-                nvAdapter = new CityAdapter(dataBindingComponent, city -> navigationController.navigateToItemUploadActivity(CityListFragment.this.getActivity(), getArguments().getParcelable("Edit_Upload"), city.id, city.name, ""), this);
-            }
-            else{
-                nvAdapter = new CityAdapter(dataBindingComponent, city -> navigationController.navigateToItemUploadActivity(CityListFragment.this.getActivity(), getArguments().getParcelable("Edit_Upload"), city.id, city.name, "asdasd"), this);
+            //   nvAdapter = new CityAdapter(dataBindingComponent, city -> navigationController.navigateToItemUploadActivity(CityListFragment.this.getActivity(), city.id, city.name,getArguments().getString("Coming_From_Main")), this);
+            nvAdapter = new CityAdapter(dataBindingComponent, city -> navigationController.navigateToItemUploadActivity(CityListFragment.this.getActivity(),item, city.id,city.name,city,itemCategory,itemSubCategory,def_img),this);
 
-            }
 
         }else{
             nvAdapter = new CityAdapter(dataBindingComponent, city -> navigationController.navigateToSelectedCityDetail(getActivity(), city.id, city.name,""), this);

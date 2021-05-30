@@ -1,12 +1,15 @@
 package com.macinternetservices.sablebusinessdirectory.viewobject;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 
 import com.google.gson.annotations.SerializedName;
 
 @Entity(primaryKeys = "id")
-public class ItemSpecs {
+public class ItemSpecs implements Parcelable {
     @SerializedName("id")
     @NonNull
     public final String id;
@@ -49,5 +52,49 @@ public class ItemSpecs {
         this.updatedUserId = updatedUserId;
         this.updatedFlag = updatedFlag;
         this.isEmptyObject = isEmptyObject;
+    }
+
+    protected ItemSpecs(Parcel in) {
+        id = in.readString();
+        itemId = in.readString();
+        name = in.readString();
+        description = in.readString();
+        addedDate = in.readString();
+        addedUserId = in.readString();
+        updatedDate = in.readString();
+        updatedUserId = in.readString();
+        updatedFlag = in.readString();
+        isEmptyObject = in.readString();
+    }
+
+    public static final Creator<ItemSpecs> CREATOR = new Creator<ItemSpecs>() {
+        @Override
+        public ItemSpecs createFromParcel(Parcel in) {
+            return new ItemSpecs(in);
+        }
+
+        @Override
+        public ItemSpecs[] newArray(int size) {
+            return new ItemSpecs[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(itemId);
+        dest.writeString(name);
+        dest.writeString(description);
+        dest.writeString(addedDate);
+        dest.writeString(addedUserId);
+        dest.writeString(updatedDate);
+        dest.writeString(updatedUserId);
+        dest.writeString(updatedFlag);
+        dest.writeString(isEmptyObject);
     }
 }

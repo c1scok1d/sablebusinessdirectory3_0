@@ -1,5 +1,8 @@
 package com.macinternetservices.sablebusinessdirectory.viewobject;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 
@@ -11,7 +14,7 @@ import com.google.gson.annotations.SerializedName;
  */
 
 @Entity(primaryKeys = "userId")
-public class User {
+public class User implements Parcelable {
 
     @NonNull
     @SerializedName("user_id")
@@ -83,5 +86,63 @@ public class User {
         this.isBanned = isBanned;
         this.addedDate = addedDate;
         this.deviceToken = deviceToken;
+    }
+
+    protected User(Parcel in) {
+        userId = in.readString();
+        userIsSysAdmin = in.readString();
+        isCityAdmin = in.readString();
+        facebookId = in.readString();
+        googleId = in.readString();
+        userName = in.readString();
+        userEmail = in.readString();
+        userPhone = in.readString();
+        userPassword = in.readString();
+        userAboutMe = in.readString();
+        userCoverPhoto = in.readString();
+        userProfilePhoto = in.readString();
+        roleId = in.readString();
+        status = in.readString();
+        isBanned = in.readString();
+        addedDate = in.readString();
+        deviceToken = in.readString();
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(userId);
+        dest.writeString(userIsSysAdmin);
+        dest.writeString(isCityAdmin);
+        dest.writeString(facebookId);
+        dest.writeString(googleId);
+        dest.writeString(userName);
+        dest.writeString(userEmail);
+        dest.writeString(userPhone);
+        dest.writeString(userPassword);
+        dest.writeString(userAboutMe);
+        dest.writeString(userCoverPhoto);
+        dest.writeString(userProfilePhoto);
+        dest.writeString(roleId);
+        dest.writeString(status);
+        dest.writeString(isBanned);
+        dest.writeString(addedDate);
+        dest.writeString(deviceToken);
     }
 }

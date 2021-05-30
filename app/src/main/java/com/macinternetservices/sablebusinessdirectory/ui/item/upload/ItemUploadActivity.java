@@ -45,19 +45,19 @@ public class ItemUploadActivity extends PSAppCompactActivity {
 
     private void initUI(ActivityItemUploadBinding binding) {
         initToolbar(binding.toolbar, getResources().getString(R.string.item_upload__item_upload));
-        if (getIntent().hasExtra(Constants.CITY_ID)){
+       // if (getIntent().hasExtra(Constants.CITY_ID)){
             Fragment fragment=new ItemUploadFragment();
             Bundle bundle=new Bundle();
-            bundle.putString(Constants.CITY_ID,getIntent().getStringExtra(Constants.CITY_ID));
-            bundle.putString(Constants.CITY_NAME,getIntent().getStringExtra(Constants.CITY_NAME));
-            if (getIntent().hasExtra("Edit_Upload")){
-                bundle.putParcelable("Edit_Upload",getIntent().getParcelableExtra("Edit_Upload"));
-            }
+            bundle.putParcelable("ITEM",getIntent().getExtras().getParcelable("ITEM"));
+            bundle.putParcelable("CITY",getIntent().getExtras().getParcelable("CITY"));
+            bundle.putParcelable("CAT",getIntent().getExtras().getParcelable("CAT"));
+            bundle.putParcelable("SUB_CAT",getIntent().getExtras().getParcelable("SUB_CAT"));
+            bundle.putParcelable("IMG",getIntent().getExtras().getParcelable("IMG"));
             fragment.setArguments(bundle);
             setupFragment(fragment);
-        }else{
-            setupFragment(new ItemUploadFragment());
-        }
+      //  }else{
+        //    setupFragment(new ItemUploadFragment());
+       // }
 
     }
     @Override

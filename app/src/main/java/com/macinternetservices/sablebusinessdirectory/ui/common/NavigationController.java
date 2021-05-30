@@ -6,7 +6,6 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.text.TextUtils;
 
 import androidx.fragment.app.FragmentActivity;
@@ -87,9 +86,13 @@ import com.macinternetservices.sablebusinessdirectory.ui.user.verifyphone.Verify
 import com.macinternetservices.sablebusinessdirectory.ui.user.verifyphone.VerifyMobileFragment;
 import com.macinternetservices.sablebusinessdirectory.utils.Constants;
 import com.macinternetservices.sablebusinessdirectory.utils.Utils;
+import com.macinternetservices.sablebusinessdirectory.viewobject.City;
 import com.macinternetservices.sablebusinessdirectory.viewobject.Comment;
+import com.macinternetservices.sablebusinessdirectory.viewobject.Image;
 import com.macinternetservices.sablebusinessdirectory.viewobject.Item;
+import com.macinternetservices.sablebusinessdirectory.viewobject.ItemCategory;
 import com.macinternetservices.sablebusinessdirectory.viewobject.ItemHistory;
+import com.macinternetservices.sablebusinessdirectory.viewobject.ItemSubCategory;
 import com.macinternetservices.sablebusinessdirectory.viewobject.Noti;
 import com.macinternetservices.sablebusinessdirectory.viewobject.holder.CityParameterHolder;
 import com.macinternetservices.sablebusinessdirectory.viewobject.holder.ItemParameterHolder;
@@ -753,7 +756,6 @@ public class NavigationController {
         intent.putExtra(Constants.CITY_HOLDER, cityParameterHolder);
         intent.putExtra(Constants.CITY_TITLE, title);
         intent.putExtra("Coming_From_Main", "1");
-
         fragmentActivity.startActivityForResult(intent,1212);
     }
 
@@ -959,15 +961,13 @@ public class NavigationController {
         }
     }
 
-    public void navigateToExpandActivity(Activity activity, int flag, String selectId, String Id,String Edit_Upload,Item item) {
+    public void navigateToExpandActivity(Activity activity, int flag, String selectId, String Id, City city, ItemCategory itemCategory, ItemSubCategory itemSubCategory
+    ,Item item,Image image) {
         Intent intent = new Intent(activity, SelectionActivity.class);
         intent.putExtra(Constants.FLAG, flag);
         if (flag == Constants.SELECT_CITY) {
             intent.putExtra(Constants.CITY_ID, selectId);
             intent.putExtra("Coming_From_Main", "1");
-            if (!Edit_Upload.equals("")) {
-                intent.putExtra("Edit_Upload", item);
-            }
         }
         if (flag == Constants.SELECT_CATEGORY) {
             intent.putExtra(Constants.CATEGORY_ID, selectId);
@@ -979,6 +979,15 @@ public class NavigationController {
         if (flag == Constants.SELECT_STATUS) {
             intent.putExtra(Constants.STATUS_ID, selectId);
         }
+        if (item!=null) {
+            intent.putExtra("CITY", city);
+            intent.putExtra("CAT", itemCategory);
+            intent.putExtra("SUB_CAT", itemSubCategory);
+            intent.putExtra("ITEM", item);
+            if (image!=null) {
+                intent.putExtra("IMG", image);
+            }
+            }
         activity.startActivityForResult(intent, 1);
     }
 
@@ -1085,23 +1094,21 @@ public class NavigationController {
         activity.setResult(Constants.RESULT_CODE_FROM_MAP_VIEW, intent);
     }
 
-    public void navigateToItemUploadActivity(Activity activity, Item itemList,String city_id,String city_name,String Edit_Upload) {
+    public void navigateToItemUploadActivity(Activity activity, Item itemList, String city_id, String city_name, City city, ItemCategory itemCategory, ItemSubCategory itemSubCategory, Image image) {
         Intent intent = new Intent(activity, ItemUploadActivity.class);
-        if (itemList != null) {
-            intent.putExtra(Constants.ITEM_ID, itemList.id);
-            intent.putExtra(Constants.ITEM_NAME, itemList.name);
-            intent.putExtra(Constants.CITY_ID,city_id);
-            intent.putExtra(Constants.CITY_NAME,city_name);
-            if (!Edit_Upload.equals("")) {
-                intent.putExtra("Edit_Upload",itemList);
-            }
-
-        }else{
+/*        if (itemList != null) {*/
+ /*           intent.putExtra(Constants.ITEM_ID, itemList.id);
+            intent.putExtra(Constants.ITEM_NAME, itemList.name);*/
+            intent.putExtra("ITEM", itemList);
+            intent.putExtra("CITY", city);
+            intent.putExtra("CAT", itemCategory);
+            intent.putExtra("SUB_CAT", itemSubCategory);
+            intent.putExtra("IMG", image);
+       /* }else{
             if (!TextUtils.isEmpty(city_id) && !TextUtils.isEmpty(city_name))
                 intent.putExtra(Constants.CITY_ID,city_id);
             intent.putExtra(Constants.CITY_NAME,city_name);
-
-        }
+        }*/
         activity.startActivity(intent);
     }
 

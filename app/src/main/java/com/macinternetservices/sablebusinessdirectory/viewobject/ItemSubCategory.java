@@ -1,5 +1,8 @@
 package com.macinternetservices.sablebusinessdirectory.viewobject;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 import androidx.room.Embedded;
 import androidx.room.Entity;
@@ -7,7 +10,7 @@ import androidx.room.Entity;
 import com.google.gson.annotations.SerializedName;
 
 @Entity(primaryKeys = "id")
-public class ItemSubCategory {
+public class ItemSubCategory implements Parcelable {
 
     @NonNull
     @SerializedName("id")
@@ -69,5 +72,53 @@ public class ItemSubCategory {
         this.addedDateStr = addedDateStr;
         this.defaultPhoto = defaultPhoto;
         this.defaultIcon = defaultIcon;
+    }
+
+    protected ItemSubCategory(Parcel in) {
+        id = in.readString();
+        name = in.readString();
+        status = in.readString();
+        addedDate = in.readString();
+        addedUserId = in.readString();
+        updatedDate = in.readString();
+        cityId = in.readString();
+        catId = in.readString();
+        deletedFlag = in.readString();
+        updatedUserId = in.readString();
+        updatedFlag = in.readString();
+        addedDateStr = in.readString();
+    }
+
+    public static final Creator<ItemSubCategory> CREATOR = new Creator<ItemSubCategory>() {
+        @Override
+        public ItemSubCategory createFromParcel(Parcel in) {
+            return new ItemSubCategory(in);
+        }
+
+        @Override
+        public ItemSubCategory[] newArray(int size) {
+            return new ItemSubCategory[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(name);
+        dest.writeString(status);
+        dest.writeString(addedDate);
+        dest.writeString(addedUserId);
+        dest.writeString(updatedDate);
+        dest.writeString(cityId);
+        dest.writeString(catId);
+        dest.writeString(deletedFlag);
+        dest.writeString(updatedUserId);
+        dest.writeString(updatedFlag);
+        dest.writeString(addedDateStr);
     }
 }

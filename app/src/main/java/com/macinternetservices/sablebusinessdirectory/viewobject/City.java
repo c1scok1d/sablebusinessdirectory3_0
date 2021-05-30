@@ -131,6 +131,7 @@ public class City implements Parcelable {
         updatedDate = in.readString();
         updatedUserId = in.readString();
         addedDateStr = in.readString();
+        defaultPhoto = in.readParcelable(Image.class.getClassLoader());
         touchCount = in.readString();
     }
 
@@ -174,6 +175,7 @@ public class City implements Parcelable {
         dest.writeString(updatedDate);
         dest.writeString(updatedUserId);
         dest.writeString(addedDateStr);
+        dest.writeParcelable(defaultPhoto, flags);
         dest.writeString(touchCount);
     }
 }

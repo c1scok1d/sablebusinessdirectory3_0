@@ -159,7 +159,8 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
 
         binding.get().floatingActionButton.setOnClickListener(view ->
                 Utils.navigateOnUserVerificationActivity(userIdToVerify, loginUserId, psDialogMsg, getActivity(), navigationController, () ->
-                        navigationController.navigateToItemUploadActivity(getActivity(), null,"","","")));
+                        navigationController.navigateToItemUploadActivity(getActivity(), null,"","",null,
+                                null,null,null)));
 
         viewPager = new AutoClearedValue<>(this, binding.get().blogViewPager);
 
