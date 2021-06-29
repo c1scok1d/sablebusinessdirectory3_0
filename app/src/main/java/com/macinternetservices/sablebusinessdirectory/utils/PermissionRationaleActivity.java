@@ -70,7 +70,7 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
     TextSwitcher textSwitcher;
     ImageView imageView;
     Button deny_permission_request, approve_permission_request;
-    private static final int FRAME_TIME_MS = 4000;
+    private static final int FRAME_TIME_MS = 3000;
 
     private Handler imageSwitchHandler;
     ProgressBar progressBar;

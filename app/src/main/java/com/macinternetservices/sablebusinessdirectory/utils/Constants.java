@@ -142,7 +142,7 @@ Location Current_Location=new Location("");
 
     //radius key//
     String RADIUS_KEY="RADIUS_KEY";
-    String CONST_RADIUS="10";
+    String CONST_RADIUS = "10";
 
 
     //region Product
