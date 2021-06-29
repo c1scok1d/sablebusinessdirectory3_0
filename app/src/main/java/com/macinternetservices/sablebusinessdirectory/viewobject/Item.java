@@ -200,7 +200,10 @@ public class Item implements Parcelable {
     @SerializedName("paid_status")
     public String paidStatus;
 
-    public Item(@NonNull String id, String cityId, String catId, String subCatId, String itemStatusId, String name, String description, String searchTag, String highlightInformation, String isFeatured, String addedDate, String addedUserId, String updatedDate, String updatedUserId, String updatedFlag, String overallRating, String touchCount, String favouriteCount, String likeCount, String lat, String lng, String openingHour, String closingHour, String phone1, String phone2, String phone3, String website, String facebook, String google_plus, String twitter, String youtube, String instagram, String pinterest, String terms, String cancelation_policy, String additional_info, String time_remark, String address, String addedDateStr, String transStatus, Image defaultPhoto, ItemCategory category, ItemSubCategory subCategory, String isLiked, String isFavourited, String imageCount, String commentHeaderCount, String currencySymbol, String currencyShortForm, City city, RatingDetail ratingDetails,String whatsapp, String messenger, String email, String isPromotion, User user, String paidStatus) {
+    @SerializedName("distance")
+    public String distance;
+
+    public Item(@NonNull String id, String cityId, String catId, String subCatId, String itemStatusId, String name, String description, String searchTag, String highlightInformation, String isFeatured, String addedDate, String addedUserId, String updatedDate, String updatedUserId, String updatedFlag, String overallRating, String touchCount, String favouriteCount, String likeCount, String lat, String lng, String openingHour, String closingHour, String phone1, String phone2, String phone3, String website, String facebook, String google_plus, String twitter, String youtube, String instagram, String pinterest, String terms, String cancelation_policy, String additional_info, String time_remark, String address, String addedDateStr, String transStatus, Image defaultPhoto, ItemCategory category, ItemSubCategory subCategory, String isLiked, String isFavourited, String imageCount, String commentHeaderCount, String currencySymbol, String currencyShortForm, City city, RatingDetail ratingDetails,String whatsapp, String messenger, String email, String isPromotion, User user, String paidStatus, String distance) {
         this.id = id;
         this.cityId = cityId;
         this.catId = catId;
@@ -258,6 +261,7 @@ public class Item implements Parcelable {
         this.isPromotion = isPromotion;
         this.user = user;
         this.paidStatus = paidStatus;
+        this.distance = distance;
     }
 
     protected Item(Parcel in) {
@@ -312,6 +316,7 @@ public class Item implements Parcelable {
         email = in.readString();
         isPromotion = in.readString();
         paidStatus = in.readString();
+        distance = in.readString();
     }
 
     public static final Creator<Item> CREATOR = new Creator<Item>() {
@@ -384,5 +389,6 @@ public class Item implements Parcelable {
         dest.writeString(email);
         dest.writeString(isPromotion);
         dest.writeString(paidStatus);
+        dest.writeString(distance);
     }
 }

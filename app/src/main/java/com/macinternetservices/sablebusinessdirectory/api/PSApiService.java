@@ -1,7 +1,11 @@
 package com.macinternetservices.sablebusinessdirectory.api;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 
+import com.macinternetservices.sablebusinessdirectory.utils.Constants;
+import com.macinternetservices.sablebusinessdirectory.utils.Utils;
 import com.macinternetservices.sablebusinessdirectory.viewobject.AboutUs;
 import com.macinternetservices.sablebusinessdirectory.viewobject.ApiStatus;
 import com.macinternetservices.sablebusinessdirectory.viewobject.Blog;
@@ -374,10 +378,13 @@ public interface PSApiService {
 
     //endregion
 
-
+    //*********************** HERE LOOK SEE
     //region SearchItem
+    String lat = Constants.LAT;
+    String lng = Constants.LNG;
     @FormUrlEncoded
-    @POST("rest/items/search/api_key/{API_KEY}/limit/{limit}/offset/{offset}/login_user_id/{login_user_id}")
+    @POST("rest/items/search/api_key/{API_KEY}/limit/{limit}/offset/{offset}/login_user_id/{login_user_id}/lat/"+Constants.LAT +"/"+Constants.LNG +"/-87.642700/miles/20")
+    //@POST("rest/items/search/api_key/{API_KEY}/limit/{limit}/offset/{offset}/login_user_id/{login_user_id}")
     LiveData<ApiResponse<List<Item>>> searchItem(
             @Path("API_KEY") String API_KEY,
             @Path("limit") String limit,

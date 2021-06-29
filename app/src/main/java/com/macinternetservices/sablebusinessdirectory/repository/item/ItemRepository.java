@@ -243,6 +243,7 @@ public class ItemRepository extends PSRepository {
             protected LiveData<ApiResponse<List<Item>>> createCall() {
                 Utils.psLog("Call API Service to getProductListByKey.");
 
+                String miles ="20";
                 return psApiService.searchItem(Config.API_KEY, limit, offset, loginUserId, itemParameterHolder.keyword, itemParameterHolder.city_id, itemParameterHolder.cat_id, itemParameterHolder.sub_cat_id,
                         itemParameterHolder.order_by, itemParameterHolder.order_type, itemParameterHolder.rating_value, itemParameterHolder.is_featured, itemParameterHolder.is_promotion, itemParameterHolder.lat,
                         itemParameterHolder.lng, itemParameterHolder.miles,itemParameterHolder.added_user_id,itemParameterHolder.isPaid, itemParameterHolder.status);

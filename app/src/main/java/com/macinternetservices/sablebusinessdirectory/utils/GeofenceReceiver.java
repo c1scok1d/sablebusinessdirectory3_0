@@ -42,40 +42,38 @@ public class GeofenceReceiver extends IntentService {
                 gpsTracker.getLocation();
 
                 SimpleGeofence sg = null;
-                for (SimpleGeofence simpleGeofenceHashMap  : GeolocationService.geofences.values()) {
+                loop: for (SimpleGeofence simpleGeofenceHashMap  : GeolocationService.geofences.values()) {
                     sg = simpleGeofenceHashMap;
                     String transitionName = "";
                     switch (transitionType) {
                         case Geofence.GEOFENCE_TRANSITION_DWELL:
-                            if (distance(gpsTracker.latitude, gpsTracker.longitude,
-                                    simpleGeofenceHashMap.getLatitude(), simpleGeofenceHashMap.getLongitude()) <= Double.parseDouble("3") && simpleGeofenceHashMap.getIsPromoted().equals("1")) { // if distance < 5 miles and isPromoted alert
+                            if (distance(gpsTracker.getLatitude(), gpsTracker.getLongitude(),
+                                    simpleGeofenceHashMap.getLatitude(), simpleGeofenceHashMap.getLongitude()) <= Double.parseDouble(Constants.CONST_RADIUS)
+                                    && simpleGeofenceHashMap.getIsPromoted().equals("1")
+                                    || simpleGeofenceHashMap.getIsfeatured().equals("1")) { // if distance < 5 miles and isPromoted alert
                                 transitionName = "dwell";
-                                break;
-                            } else {
-                                if (distance(gpsTracker.latitude, gpsTracker.longitude,
-                                        simpleGeofenceHashMap.getLatitude(), simpleGeofenceHashMap.getLongitude()) <= Double.parseDouble("3") && simpleGeofenceHashMap.getIsfeatured().equals("1")) { // if distance < 5 miles and isPromoted alert
-                                    transitionName = "dwell";
-                                    break;
-                                }
+                                break loop;
                             }
+                            break;
                         case Geofence.GEOFENCE_TRANSITION_ENTER:
-                            if (distance(gpsTracker.latitude, gpsTracker.longitude,
-                                    simpleGeofenceHashMap.getLatitude(), simpleGeofenceHashMap.getLongitude()) <= Double.parseDouble(Constants.CONST_RADIUS) && simpleGeofenceHashMap.getIsfeatured().equals("1")) { // if distance > 3 miles alert
+                            if (transitionName != "enter" && distance(gpsTracker.getLatitude(), gpsTracker.getLongitude(),
+                                    simpleGeofenceHashMap.getLatitude(), simpleGeofenceHashMap.getLongitude()) <= Double.parseDouble(Constants.CONST_RADIUS)
+                                    && simpleGeofenceHashMap.getIsfeatured().equals("1")) { // if distance > 3 miles alert
                                 transitionName = "enter";
                                 near++;
                             }
                             break;
                         case Geofence.GEOFENCE_TRANSITION_EXIT:
-                            if (distance(gpsTracker.latitude, gpsTracker.longitude,
-                                    simpleGeofenceHashMap.getLatitude(), simpleGeofenceHashMap.getLongitude()) >= Double.parseDouble(Constants.CONST_RADIUS) && simpleGeofenceHashMap.getIsfeatured().equals("1")) { // if distance > 3 miles alert
+                            if (distance(gpsTracker.getLatitude(), gpsTracker.getLongitude(),
+                                    simpleGeofenceHashMap.getLatitude(), simpleGeofenceHashMap.getLongitude()) >= Double.parseDouble(Constants.CONST_RADIUS)
+                                    && simpleGeofenceHashMap.getIsfeatured().equals("1")) { // if distance > 3 miles alert
                                 transitionName = "exit";
                                 near++;
                             }
                             break;
                     }
                 }
-                //if (near > 0) {
-                    GeofenceNotification geofenceNotification = new GeofenceNotification(
+                GeofenceNotification geofenceNotification = new GeofenceNotification(
                             this);
                     try {
                         geofenceNotification
@@ -83,8 +81,6 @@ public class GeofenceReceiver extends IntentService {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    //Toast.makeText(getApplicationContext(), "There are " + near + " black owned businesses near your current location", Toast.LENGTH_LONG).show();
-                //}
             }
         }
     }

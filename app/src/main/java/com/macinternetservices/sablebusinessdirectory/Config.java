@@ -213,5 +213,5 @@ public class Config {
      * Razor
      */
     public static boolean isRazorSupportMultiCurrency = false;
-    public static String defaultRazorCurrency = "INR";
+    public static String defaultRazorCurrency = "USD";
 }

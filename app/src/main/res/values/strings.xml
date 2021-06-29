@@ -458,11 +458,11 @@
 
     <!--Dashboard-->
     <string name="dashboard_keyword">Keyword</string>
-    <string name="dashboard_best_things">Explore Black Owned Business</string>
+    <string name="dashboard_best_things">Black Owned Near You</string>
     <string name="dashboard_popular_cities">Listings By City</string>
     <string name="dashboard_best_cities">Featured City </string>
-    <string name="dashboard_new_cities">Explore New Listings</string>
-    <string name="dashboard_blog">Something Exciting is Happening</string>
+    <string name="dashboard_new_cities">Planning A Trip?</string>
+    <string name="dashboard_blog">Promotions &amp; Events</string>
     <string name="dashboard_popular_places">Sables\'s Best</string>
     <string name="dashboard_new_places">Explore New Business Listings</string>
     <string name="dashboard_promo_list">Ongoing Promos</string>
@@ -473,8 +473,8 @@
     <string name="dashboard_best_things_desc">Black owned businesses nearest you!</string>
     <string name="dashboard_popular_cities_desc">Find black owned businesses in other cities!</string>
     <string name="dashboard_best_cities_desc">Check out our featured black business city!</string>
-    <string name="dashboard_new_cities_desc">Explore our newest listings by city.</string>
-    <string name="dashboard_popular_places_desc">Check out some of our favorite black owned businesses!</string>
+    <string name="dashboard_new_cities_desc">Explore listings by city.</string>
+    <string name="dashboard_popular_places_desc">Some of our favorite listings</string>
     <string name="dashboard_new_places_desc">Explore our newest black business listings.</string>
     <string name="dashboard_promo_list_desc">Enjoy our promos and save money while you shop.</string>
     <!--Dashboard-->
