@@ -1,5 +1,6 @@
 package com.macinternetservices.sablebusinessdirectory.viewobject.holder;
 
+import com.macinternetservices.sablebusinessdirectory.Config;
 import com.macinternetservices.sablebusinessdirectory.utils.Constants;
 
 import java.io.Serializable;
@@ -18,9 +19,9 @@ public class ItemParameterHolder implements Serializable {
         this.rating_value = "";
         this.is_featured = "";
         this.is_promotion = "";
-        this.lat = "";
-        this.lng = "";
-        this.miles = "";
+        this.lat = String.valueOf(Config.CurrentLocation.getLatitude());
+        this.lng = String.valueOf(Config.CurrentLocation.getLongitude());
+        this.miles = "500";
         this.cityLat = "";
         this.cityLng = "";
         this.cityName = "";
@@ -40,8 +41,8 @@ public class ItemParameterHolder implements Serializable {
         this.rating_value = "";
         this.is_featured = Constants.ONE;
         this.is_promotion = "";
-        this.lat = "";
-        this.lng = "";
+        this.lat = String.valueOf(Config.CurrentLocation.getLatitude());
+        this.lng = String.valueOf(Config.CurrentLocation.getLongitude());
         this.miles = "";
         this.cityLat = "";
         this.cityLng = "";
@@ -63,8 +64,8 @@ public class ItemParameterHolder implements Serializable {
         this.rating_value = "";
         this.is_featured = "";
         this.is_promotion = Constants.ONE;
-        this.lat = "";
-        this.lng = "";
+        this.lat = String.valueOf(Config.CurrentLocation.getLatitude());
+        this.lng = String.valueOf(Config.CurrentLocation.getLongitude());
         this.miles = "";
         this.cityLat = "";
         this.cityLng = "";
@@ -86,8 +87,8 @@ public class ItemParameterHolder implements Serializable {
         this.rating_value = "";
         this.is_featured = "";
         this.is_promotion = "";
-        this.lat = "";
-        this.lng = "";
+        this.lat = String.valueOf(Config.CurrentLocation.getLatitude());
+        this.lng = String.valueOf(Config.CurrentLocation.getLongitude());
         this.miles = "";
         this.cityLat = "";
         this.cityLng = "";
@@ -109,8 +110,8 @@ public class ItemParameterHolder implements Serializable {
         this.rating_value = "";
         this.is_featured = "";
         this.is_promotion = "";
-        this.lat = "";
-        this.lng = "";
+        this.lat = String.valueOf(Config.CurrentLocation.getLatitude());
+        this.lng = String.valueOf(Config.CurrentLocation.getLongitude());
         this.miles = "";
         this.cityLat = "";
         this.cityLng = "";
@@ -132,8 +133,8 @@ public class ItemParameterHolder implements Serializable {
         this.is_promotion = "";
         this.order_by = Constants.FILTERING_ADDED_DATE;
         this.order_type = Constants.FILTERING_DESC;
-        this.lat = "";
-        this.lng = "";
+        this.lat = String.valueOf(Config.CurrentLocation.getLatitude());
+        this.lng = String.valueOf(Config.CurrentLocation.getLongitude());
         this.miles = "";
         this.cityLat = "";
         this.cityLng = "";
@@ -155,8 +156,8 @@ public class ItemParameterHolder implements Serializable {
         this.rating_value = "";
         this.is_featured = "";
         this.is_promotion = "";
-        this.lat = "";
-        this.lng = "";
+        this.lat = String.valueOf(Config.CurrentLocation.getLatitude());
+        this.lng = String.valueOf(Config.CurrentLocation.getLongitude());
         this.miles = "";
         this.cityLat = "";
         this.cityLng = "";

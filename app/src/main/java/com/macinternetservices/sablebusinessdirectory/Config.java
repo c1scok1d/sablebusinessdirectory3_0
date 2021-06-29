@@ -1,11 +1,15 @@
 package com.macinternetservices.sablebusinessdirectory;
 
+import android.location.Location;
+
 /**
  * Created by Panacea-Soft on 7/15/15.
  * Contact Email : teamps.is.cool@gmail.com
  */
 
 public class Config {
+
+    public static Location CurrentLocation=null;
 
     /**
      * AppVersion
@@ -96,7 +100,7 @@ public class Config {
 
     public static int HISTORY_COUNT = 30;
 
-    public static final int LIMIT_FROM_DB_COUNT = 6;
+    public static final int LIMIT_FROM_DB_COUNT = 100;
 
     public static int SPECIFICATION_COUNT = 10;
 

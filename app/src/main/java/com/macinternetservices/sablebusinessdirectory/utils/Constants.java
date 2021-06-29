@@ -1,5 +1,7 @@
 package com.macinternetservices.sablebusinessdirectory.utils;
 
+import android.location.Location;
+
 /**
  * Created by Panacea-Soft on 3/19/19.
  * Contact Email : teamps.is.cool@gmail.com
@@ -9,6 +11,8 @@ package com.macinternetservices.sablebusinessdirectory.utils;
 public interface Constants {
 
     //region General
+
+Location Current_Location=new Location("");
 
     String EMPTY_STRING = "";
     String SPACE_STRING = " ";

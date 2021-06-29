@@ -10,6 +10,12 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/550fd6ba3cc20c7b10dc9d5e60eec1c4/jetified-consent-library-1.0.8/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/550fd6ba3cc20c7b10dc9d5e60eec1c4/jetified-consent-library-1.0.8/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/550fd6ba3cc20c7b10dc9d5e60eec1c4/jetified-consent-library-1.0.8/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c0766ae6afc0ffceaea03729b00ecb54/jetified-consent-library-1.0.8/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c0766ae6afc0ffceaea03729b00ecb54/jetified-consent-library-1.0.8/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c0766ae6afc0ffceaea03729b00ecb54/jetified-consent-library-1.0.8/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b74ff98731e1cffa2f34a0e3f5472ed7/jetified-consent-library-1.0.8/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b74ff98731e1cffa2f34a0e3f5472ed7/jetified-consent-library-1.0.8/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b74ff98731e1cffa2f34a0e3f5472ed7/jetified-consent-library-1.0.8/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
