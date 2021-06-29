@@ -150,6 +150,8 @@ public class MainActivity extends PSAppCompactActivity {
         initData();
 
         checkConsentStatus();
+
+        // get current location
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             OnGPS();
