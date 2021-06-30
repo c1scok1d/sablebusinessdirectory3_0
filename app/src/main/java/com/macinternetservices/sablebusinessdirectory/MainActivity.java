@@ -99,11 +99,7 @@ public class MainActivity extends PSAppCompactActivity {
     private String token = "";
     private UserViewModel userViewModel;
 
-    LocationManager locationManager;
-    public String latitude, longitude;
-    private static final int REQUEST_ACCESS_FINE_LOCATION = 111,
-            REQUEST_ACCESS_COARSE_LOCATION = 114;
-
+   // public String latitude, longitude;
     private NotificationViewModel notificationViewModel;
     private User user;
     private PSDialogMsg psDialogMsg;
@@ -186,11 +182,6 @@ public class MainActivity extends PSAppCompactActivity {
     }
     @Override
     protected void onResume() {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                     checkPermissionsQ();
-                 } else {
-                     checkPermissions();
-                 }
         super.onResume();
     }
 
@@ -326,6 +317,12 @@ public class MainActivity extends PSAppCompactActivity {
      */
     private void initUIAndActions() {
         psDialogMsg = new PSDialogMsg(this, false);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            checkPermissionsQ();
+        } else {
+            checkPermissions();
+        }
 
         Menu navViewMenu = binding.navView.getMenu();
         if(!Config.ENABLE_ITEM_UPLOAD){
