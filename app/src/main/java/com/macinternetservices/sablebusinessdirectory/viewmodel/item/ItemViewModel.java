@@ -94,8 +94,6 @@ public class ItemViewModel extends PSViewModel {
     public String img_id = "";
     public String img_desc = "";
     public String img_path = "";
-    public String lat = "48.856452647178386";
-    public String lng = "2.3523519560694695";
 
     public Uri ImageUri = null;
 
@@ -109,7 +107,7 @@ public class ItemViewModel extends PSViewModel {
                 return AbsentLiveData.create();
             }
 
-            return repository.getItemListByKey(obj.loginUserId, obj.limit, obj.offset, obj.itemParameterHolder);
+            return repository.getItemListByKey(obj.loginUserId, obj.limit, obj.offset, obj.itemParameterHolder, obj.lat, obj.lng);
 
         });
 
@@ -119,7 +117,7 @@ public class ItemViewModel extends PSViewModel {
                 return AbsentLiveData.create();
             }
 
-            return repository.getNextPageProductListByKey(obj.itemParameterHolder, obj.loginUserId, obj.limit, obj.offset);
+            return repository.getNextPageProductListByKey(obj.itemParameterHolder, obj.loginUserId, obj.limit, obj.offset, obj.lat, obj.lng);
 
         });
 
@@ -155,9 +153,9 @@ public class ItemViewModel extends PSViewModel {
 
     //region getItemList
 
-    public void setItemListByKeyObj(String loginUserId, String limit, String offset, ItemParameterHolder parameterHolder) {
+    public void setItemListByKeyObj(String loginUserId, String limit, String offset, ItemParameterHolder parameterHolder, String lat, String lng) {
 
-        ItemTmpDataHolder tmpDataHolder = new ItemTmpDataHolder(limit, offset, loginUserId, parameterHolder);
+        ItemTmpDataHolder tmpDataHolder = new ItemTmpDataHolder(limit, offset, loginUserId, parameterHolder, lat, lng);
 
         this.itemListByKeyObj.setValue(tmpDataHolder);
 
@@ -167,11 +165,11 @@ public class ItemViewModel extends PSViewModel {
         return itemListByKeyData;
     }
 
-    public void setNextPageItemListByKeyObj(String limit, String offset, String loginUserId, ItemParameterHolder parameterHolder) {
+    public void setNextPageItemListByKeyObj(String limit, String offset, String loginUserId, ItemParameterHolder parameterHolder, String lat, String lng) {
 
         if(!isLoading)
         {
-            ItemTmpDataHolder tmpDataHolder = new ItemTmpDataHolder(limit, offset, loginUserId, parameterHolder);
+            ItemTmpDataHolder tmpDataHolder = new ItemTmpDataHolder(limit, offset, loginUserId, parameterHolder, lat, lng);
 
             setLoadingState(true);
 
@@ -237,14 +235,16 @@ public class ItemViewModel extends PSViewModel {
 
     class ItemTmpDataHolder {
 
-        private String limit, offset, loginUserId;
+        private String limit, offset, loginUserId, lat, lng;
         private ItemParameterHolder itemParameterHolder;
 
-        public ItemTmpDataHolder(String limit, String offset, String loginUserId, ItemParameterHolder itemParameterHolder) {
+        public ItemTmpDataHolder(String limit, String offset, String loginUserId, ItemParameterHolder itemParameterHolder, String lat, String lng) {
             this.limit = limit;
             this.offset = offset;
             this.loginUserId = loginUserId;
             this.itemParameterHolder = itemParameterHolder;
+            this.lat = lat;
+            this.lng = lng;
         }
     }
     //region Getter And Setter for item detail List

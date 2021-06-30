@@ -152,16 +152,16 @@ public class MainActivity extends PSAppCompactActivity {
         checkConsentStatus();
 
         // get current location
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+       /* locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             OnGPS();
         } else {
             getLocation();
-        }
+        } */
 
     }
 
-    private void OnGPS() {
+    /*private void OnGPS() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Enable GPS").setCancelable(false).setPositiveButton("Yes", new  DialogInterface.OnClickListener() {
             @Override
@@ -196,7 +196,7 @@ public class MainActivity extends PSAppCompactActivity {
                 Toast.makeText(this, "Unable to find location.", Toast.LENGTH_SHORT).show();
             }
         }
-    }
+    } */
 
     @Override
     protected void attachBaseContext(Context newBase) {

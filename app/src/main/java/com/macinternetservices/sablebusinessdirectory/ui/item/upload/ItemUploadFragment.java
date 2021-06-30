@@ -47,6 +47,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
+import com.macinternetservices.sablebusinessdirectory.Config;
 import com.macinternetservices.sablebusinessdirectory.MainActivity;
 import com.macinternetservices.sablebusinessdirectory.R;
 import com.macinternetservices.sablebusinessdirectory.binding.FragmentDataBindingComponent;
@@ -171,7 +172,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
         });
 
 
-        binding.get().mapViewButton.setOnClickListener(v -> navigationController.navigateToLists(getActivity(), Constants.MAP, itemViewModel.lat, itemViewModel.lng));
+        binding.get().mapViewButton.setOnClickListener(v -> navigationController.navigateToLists(getActivity(), Constants.MAP, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude())));
 
         // for city
  /*       if(!selectedCityId.isEmpty()) {
@@ -384,8 +385,8 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                     itemViewModel.savedDescription = item.description;
                     itemViewModel.savedSearchTag = item.searchTag;
                     itemViewModel.savedHighLightInformation = item.highlightInformation;
-                    itemViewModel.lat = item.lat;
-                    itemViewModel.lng = item.lng;
+                    //Constants.LAT = item.lat;
+                    //itemViewModel.lng = item.lng;
                     itemViewModel.savedOpeningHour = item.openingHour;
                     itemViewModel.savedClosingHour = item.closingHour;
                     itemViewModel.savedPhoneOne = item.phone1;
@@ -493,8 +494,8 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                                     itemViewModel.savedDescription = item.description;
                                     itemViewModel.savedSearchTag = item.searchTag;
                                     itemViewModel.savedHighLightInformation = item.highlightInformation;
-                                    itemViewModel.lat = item.lat;
-                                    itemViewModel.lng = item.lng;
+                                    //itemViewModel.lat = item.lat;
+                                    //itemViewModel.lng = item.lng;
                                     itemViewModel.savedOpeningHour = item.openingHour;
                                     itemViewModel.savedClosingHour = item.closingHour;
                                     itemViewModel.savedPhoneOne = item.phone1;
@@ -635,8 +636,8 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                                     itemViewModel.savedDescription = item.description;
                                     itemViewModel.savedSearchTag = item.searchTag;
                                     itemViewModel.savedHighLightInformation = item.highlightInformation;
-                                    itemViewModel.lat = item.lat;
-                                    itemViewModel.lng = item.lng;
+                                    //itemViewModel.lat = item.lat;
+                                    //itemViewModel.lng = item.lng;
                                     itemViewModel.savedOpeningHour = item.openingHour;
                                     itemViewModel.savedClosingHour = item.closingHour;
                                     itemViewModel.savedPhoneOne = item.phone1;
@@ -1081,8 +1082,8 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                             itemViewModel.savedDescription = item.description;
                             itemViewModel.savedSearchTag = item.searchTag;
                             itemViewModel.savedHighLightInformation = item.highlightInformation;
-                            itemViewModel.lat = item.lat;
-                            itemViewModel.lng = item.lng;
+                            //itemViewModel.lat = item.lat;
+                            //itemViewModel.lng = item.lng;
                             itemViewModel.savedOpeningHour = item.openingHour;
                             itemViewModel.savedClosingHour = item.closingHour;
                             itemViewModel.savedPhoneOne = item.phone1;
@@ -1205,8 +1206,8 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                             itemViewModel.savedDescription = item.description;
                             itemViewModel.savedSearchTag = item.searchTag;
                             itemViewModel.savedHighLightInformation = item.highlightInformation;
-                            itemViewModel.lat = item.lat;
-                            itemViewModel.lng = item.lng;
+                            //itemViewModel.lat = item.lat;
+                            //itemViewModel.lng = item.lng;
                             itemViewModel.savedOpeningHour = item.openingHour;
                             itemViewModel.savedClosingHour = item.closingHour;
                             itemViewModel.savedPhoneOne = item.phone1;
@@ -1390,8 +1391,8 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
             editMode(itemViewModel.itemSelectId);
             itemViewModel.edit_mode = true;
         } else if (requestCode == Constants.REQUEST_CODE_TO_MAP_VIEW && resultCode == Constants.RESULT_CODE_FROM_MAP_VIEW) {
-            itemViewModel.lat = data.getStringExtra(Constants.LAT);
-            itemViewModel.lng = data.getStringExtra(Constants.LNG);
+            //itemViewModel.lat = data.getStringExtra(Constants.LAT);
+            //itemViewModel.lng = data.getStringExtra(Constants.LNG);
 
             changeCamera();
 

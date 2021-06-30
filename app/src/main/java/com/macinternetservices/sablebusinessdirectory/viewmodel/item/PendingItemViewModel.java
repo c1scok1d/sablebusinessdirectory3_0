@@ -41,7 +41,7 @@ public class PendingItemViewModel extends PSViewModel {
                 return AbsentLiveData.create();
             }
 
-            return repository.getItemListByKey(obj.loginUserId, obj.limit, obj.offset, obj.itemParameterHolder);
+            return repository.getItemListByKey(obj.loginUserId, obj.limit, obj.offset, obj.itemParameterHolder, obj.lat, obj.lng);
 
         });
 
@@ -51,16 +51,16 @@ public class PendingItemViewModel extends PSViewModel {
                 return AbsentLiveData.create();
             }
 
-            return repository.getNextPageProductListByKey(obj.itemParameterHolder, obj.loginUserId, obj.limit, obj.offset);
+            return repository.getNextPageProductListByKey(obj.itemParameterHolder, obj.loginUserId, obj.limit, obj.offset, obj.lat, obj.lng);
 
         });
 
 
     }
 
-    public void setItemListByKeyObj(String loginUserId, String limit, String offset, ItemParameterHolder parameterHolder) {
+    public void setItemListByKeyObj(String loginUserId, String limit, String offset, ItemParameterHolder parameterHolder, String lat, String lng) {
         if (!isLoading) {
-            ItemTmpDataHolder tmpDataHolder = new ItemTmpDataHolder(limit, offset, loginUserId, parameterHolder);
+            ItemTmpDataHolder tmpDataHolder = new ItemTmpDataHolder(limit, offset, loginUserId, parameterHolder, lat, lng);
 
             this.itemListByKeyObj.setValue(tmpDataHolder);
             setLoadingState(true);
@@ -72,10 +72,10 @@ public class PendingItemViewModel extends PSViewModel {
         return itemListByKeyData;
     }
 
-    public void setNextPageItemListByKeyObj(String limit, String offset, String loginUserId, ItemParameterHolder parameterHolder) {
+    public void setNextPageItemListByKeyObj(String limit, String offset, String loginUserId, ItemParameterHolder parameterHolder, String lat, String lng) {
 
         if (!isLoading) {
-            ItemTmpDataHolder tmpDataHolder = new ItemTmpDataHolder(limit, offset, loginUserId, parameterHolder);
+            ItemTmpDataHolder tmpDataHolder = new ItemTmpDataHolder(limit, offset, loginUserId, parameterHolder, lat, lng);
 
             setLoadingState(true);
 
@@ -91,14 +91,16 @@ public class PendingItemViewModel extends PSViewModel {
 
     static class ItemTmpDataHolder {
 
-        private String limit, offset, loginUserId;
+        private String limit, offset, loginUserId, lat, lng;
         private ItemParameterHolder itemParameterHolder;
 
-        ItemTmpDataHolder(String limit, String offset, String loginUserId, ItemParameterHolder itemParameterHolder) {
+        ItemTmpDataHolder(String limit, String offset, String loginUserId, ItemParameterHolder itemParameterHolder, String lat, String lng) {
             this.limit = limit;
             this.offset = offset;
             this.loginUserId = loginUserId;
             this.itemParameterHolder = itemParameterHolder;
+            this.lat = lat;
+            this.lng = lng;
         }
     }
 

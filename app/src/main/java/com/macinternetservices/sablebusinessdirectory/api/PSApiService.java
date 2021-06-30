@@ -380,16 +380,16 @@ public interface PSApiService {
 
     //*********************** HERE LOOK SEE
     //region SearchItem
-    String lat = Constants.LAT;
-    String lng = Constants.LNG;
     @FormUrlEncoded
-    @POST("rest/items/search/api_key/{API_KEY}/limit/{limit}/offset/{offset}/login_user_id/{login_user_id}/lat/"+Constants.LAT +"/lng/"+Constants.LNG +"/miles/20")
+    @POST("rest/items/search/api_key/{API_KEY}/limit/{limit}/offset/{offset}/login_user_id/{login_user_id}/lat/{lat}/lng/{lng}/miles/23")
     //@POST("rest/items/search/api_key/{API_KEY}/limit/{limit}/offset/{offset}/login_user_id/{login_user_id}")
     LiveData<ApiResponse<List<Item>>> searchItem(
             @Path("API_KEY") String API_KEY,
             @Path("limit") String limit,
             @Path("offset") String offset,
             @Path("login_user_id") String login_user_id,
+            @Path("lat") String lat,
+            @Path("lng") String lng,
             @Field("keyword") String keyword,
             @Field("city_id") String city_id,
             @Field("cat_id") String cat_id,
@@ -399,8 +399,6 @@ public interface PSApiService {
             @Field("rating_value") String rating_value,
             @Field("is_featured") String is_featured,
             @Field("is_promotion") String is_promotion,
-            @Field("lat") String lat,
-            @Field("lng") String lng,
             @Field("miles") String miles,
             @Field("added_user_id") String addedUserId,
             @Field("is_paid") String isPaid,

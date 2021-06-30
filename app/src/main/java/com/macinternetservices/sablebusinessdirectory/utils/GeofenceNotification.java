@@ -37,6 +37,7 @@ public class GeofenceNotification {
     String notificationText = "";
     String notificationText2 = "";
     protected SharedPreferences pref;
+    protected boolean is_triggered = false;
 
     public GeofenceNotification(Context context) {
         this.context = context;
@@ -73,28 +74,31 @@ public class GeofenceNotification {
         }
         switch (transitionType) {
             case Geofence.GEOFENCE_TRANSITION_ENTER:
-                if(near > 0){
-                    if (!firstName.isEmpty()) {
-                        notificationText = "Good news " +firstName+ "!";
+                if(!is_triggered) {
+                    if (near > 0) {
+                        if (!firstName.isEmpty()) {
+                            notificationText = "Good news " + firstName + "!";
+                        } else {
+                            notificationText = "Good news!";
+                        }
+                        notificationText2 = "There are " + near + " black owned businesses near you!";
                     } else {
-                        notificationText = "Good news!";
-                    }
-                    notificationText2 = "There are " + near + " black owned businesses near you!";
-                } else {
-                    if (!firstName.isEmpty()) {
-                        notificationText = "Oh no "+firstName+"!";
+                        if (!firstName.isEmpty()) {
+                            notificationText = "Oh no " + firstName + "!";
 
-                    } else {
-                        notificationText = "Oh no!";
+                        } else {
+                            notificationText = "Oh no!";
+                        }
+                        notificationText2 = "There are no businesses listed with us near you! Tap to add a listing now";
                     }
-                    notificationText2 = "There are no businesses listed with us near you! Tap to add a listing now";
+                    if (near == 1) {
+                        Toast.makeText(context, "There is " + near + " black owned businesses near you.", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(context, "There are " + near + " black owned businesses near you.", Toast.LENGTH_LONG).show();
+                    }
+                    transitionEnterNotification(context, notificationText, notificationText2);
+                    is_triggered = true;
                 }
-                if(near == 1){
-                    Toast.makeText(context, "There is " + near + " black owned businesses near you.", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(context, "There are " + near + " black owned businesses near you.", Toast.LENGTH_LONG).show();
-                }
-                transitionEnterNotification(context, notificationText, notificationText2);
                 break;
             case Geofence.GEOFENCE_TRANSITION_DWELL:
                 notificationText2 = "You are near " + simpleGeofence.getItem_name();

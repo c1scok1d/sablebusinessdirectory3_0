@@ -283,13 +283,13 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
             // update live data
 
             blogViewModel.setBlogByIdObj(String.valueOf(Config.LIST_NEW_FEED_COUNT_PAGER), String.valueOf(blogViewModel.offset));
-            discountItemViewModel.setDiscountItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, discountItemViewModel.discountItemParameterHolder);
-            featuredItemViewModel.setFeaturedItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, featuredItemViewModel.featuredItemParameterHolder);
-            popularItemViewModel.setPopularItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, popularItemViewModel.popularItemParameterHolder);
+            discountItemViewModel.setDiscountItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, discountItemViewModel.discountItemParameterHolder, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()));
+            featuredItemViewModel.setFeaturedItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, featuredItemViewModel.featuredItemParameterHolder, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()));
+            popularItemViewModel.setPopularItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, popularItemViewModel.popularItemParameterHolder, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()));
             touchCountViewModel.setTouchCountPostDataObj(loginUserId, cityViewModel.cityParameterHolder.id, Constants.CITY, cityViewModel.cityParameterHolder.id);
             itemCollectionViewModel.setAllItemCollectionObj(cityViewModel.cityParameterHolder.id, String.valueOf(Config.COLLECTION_PRODUCT_LIST_LIMIT), Constants.ZERO);
             cityViewModel.setCityListObj(String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, cityViewModel.cityParameterHolder);
-            recentItemViewModel.setRecentItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, recentItemViewModel.recentItemParameterHolder);
+            recentItemViewModel.setRecentItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, recentItemViewModel.recentItemParameterHolder, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()));
             itemCategoryViewModel.setCategoryListObj(String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, cityViewModel.cityParameterHolder.id);
         });
     }
@@ -586,7 +586,7 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
 
         //Featured Item
 
-        featuredItemViewModel.setFeaturedItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, featuredItemViewModel.featuredItemParameterHolder);
+        featuredItemViewModel.setFeaturedItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, featuredItemViewModel.featuredItemParameterHolder, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()));
 
         featuredItemViewModel.getFeaturedItemListByKeyData().observe(this, result -> {
 
@@ -623,7 +623,7 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
 
         //Popular Item
 
-        popularItemViewModel.setPopularItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, popularItemViewModel.popularItemParameterHolder);
+        popularItemViewModel.setPopularItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, popularItemViewModel.popularItemParameterHolder, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()));
 
         popularItemViewModel.getPopularItemListByKeyData().observe(this, listResource -> {
 
@@ -660,7 +660,7 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
 
         //Recent Item
 
-        recentItemViewModel.setRecentItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, recentItemViewModel.recentItemParameterHolder);
+        recentItemViewModel.setRecentItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, recentItemViewModel.recentItemParameterHolder, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()));
 
         recentItemViewModel.getRecentItemListByKeyData().observe(this, listResource -> {
 
@@ -697,7 +697,7 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
 
         //Discount Item
 
-        discountItemViewModel.setDiscountItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, discountItemViewModel.discountItemParameterHolder);
+        discountItemViewModel.setDiscountItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, discountItemViewModel.discountItemParameterHolder, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()));
 
         discountItemViewModel.getDiscountItemListByKeyData().observe(this, listResource -> {
 

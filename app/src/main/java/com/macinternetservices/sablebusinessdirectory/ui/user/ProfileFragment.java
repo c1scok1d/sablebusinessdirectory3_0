@@ -297,7 +297,7 @@ public class ProfileFragment extends PSFragment implements DataBoundListAdapter.
         //approved item list
         itemViewModel.holder.added_user_id = loginUserId;
         itemViewModel.holder.status = Constants.ONE;
-        itemViewModel.setItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.APPROVED_ITEM_COUNT), String.valueOf(itemViewModel.offset), itemViewModel.holder);
+        itemViewModel.setItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.APPROVED_ITEM_COUNT), String.valueOf(itemViewModel.offset), itemViewModel.holder, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()));
 
         LiveData<Resource<List<Item>>> news = itemViewModel.getItemListByKeyData();
 
@@ -373,7 +373,7 @@ public class ProfileFragment extends PSFragment implements DataBoundListAdapter.
         //pending item list
         pendingViewModel.holder.added_user_id = loginUserId;
         pendingViewModel.holder.status = Constants.ZERO;
-        pendingViewModel.setItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.PENDING_ITEM_COUNT), String.valueOf(pendingViewModel.offset), pendingViewModel.holder);
+        pendingViewModel.setItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.PENDING_ITEM_COUNT), String.valueOf(pendingViewModel.offset), pendingViewModel.holder, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()));
 
         LiveData<Resource<List<Item>>> pendingViewModelItemListByKeyData = pendingViewModel.getItemListByKeyData();
 
@@ -449,7 +449,7 @@ public class ProfileFragment extends PSFragment implements DataBoundListAdapter.
         //rejected item list
         rejectedViewModel.holder.added_user_id = loginUserId;
         rejectedViewModel.holder.status = Constants.THREE;
-        rejectedViewModel.setItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.REJECTED_ITEM_COUNT), String.valueOf(rejectedViewModel.offset), rejectedViewModel.holder);
+        rejectedViewModel.setItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.REJECTED_ITEM_COUNT), String.valueOf(rejectedViewModel.offset), rejectedViewModel.holder, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()));
 
         LiveData<Resource<List<Item>>> rejectedLiveData = rejectedViewModel.getItemListByKeyData();
 
@@ -525,7 +525,7 @@ public class ProfileFragment extends PSFragment implements DataBoundListAdapter.
         //disabled item list
         disabledViewModel.holder.added_user_id = loginUserId;
         disabledViewModel.holder.status = Constants.TWO;
-        disabledViewModel.setItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.DISABLED_ITEM_COUNT), String.valueOf(disabledViewModel.offset), disabledViewModel.holder);
+        disabledViewModel.setItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.DISABLED_ITEM_COUNT), String.valueOf(disabledViewModel.offset), disabledViewModel.holder, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()));
 
         LiveData<Resource<List<Item>>> disabledLiveData = disabledViewModel.getItemListByKeyData();
 

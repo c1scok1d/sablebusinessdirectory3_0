@@ -35,7 +35,7 @@ public class RecentItemViewModel extends PSViewModel {
                 return AbsentLiveData.create();
             }
 
-            return repository.getItemListByKey(obj.loginUserId, obj.limit, obj.offset, obj.itemParameterHolder);
+            return repository.getItemListByKey(obj.loginUserId, obj.limit, obj.offset, obj.itemParameterHolder, obj.lat, obj.lng);
 
         });
 
@@ -45,16 +45,16 @@ public class RecentItemViewModel extends PSViewModel {
                 return AbsentLiveData.create();
             }
 
-            return repository.getNextPageProductListByKey(obj.itemParameterHolder, obj.loginUserId, obj.limit, obj.offset);
+            return repository.getNextPageProductListByKey(obj.itemParameterHolder, obj.loginUserId, obj.limit, obj.offset, obj.lat, obj.lng);
 
         });
     }
 
     //region getItemList
 
-    public void setRecentItemListByKeyObj(String loginUserId, String limit, String offset, ItemParameterHolder parameterHolder) {
+    public void setRecentItemListByKeyObj(String loginUserId, String limit, String offset, ItemParameterHolder parameterHolder, String lat, String lng) {
 
-        RecentItemViewModel.ItemTmpDataHolder tmpDataHolder = new RecentItemViewModel.ItemTmpDataHolder(limit, offset, loginUserId, parameterHolder);
+        RecentItemViewModel.ItemTmpDataHolder tmpDataHolder = new RecentItemViewModel.ItemTmpDataHolder(limit, offset, loginUserId, parameterHolder, lat, lng);
 
         this.itemListByKeyObj.setValue(tmpDataHolder);
 
@@ -64,9 +64,9 @@ public class RecentItemViewModel extends PSViewModel {
         return recentItemListByKeyData;
     }
 
-    public void setNextPageRecentItemListByKeyObj(String limit, String offset, String loginUserId, ItemParameterHolder parameterHolder) {
+    public void setNextPageRecentItemListByKeyObj(String limit, String offset, String loginUserId, ItemParameterHolder parameterHolder, String lat, String lng) {
 
-        RecentItemViewModel.ItemTmpDataHolder tmpDataHolder = new RecentItemViewModel.ItemTmpDataHolder(limit, offset, loginUserId, parameterHolder);
+        RecentItemViewModel.ItemTmpDataHolder tmpDataHolder = new RecentItemViewModel.ItemTmpDataHolder(limit, offset, loginUserId, parameterHolder, lat, lng);
 
         this.nextPageItemListByKeyObj.setValue(tmpDataHolder);
     }
@@ -79,14 +79,16 @@ public class RecentItemViewModel extends PSViewModel {
 
     class ItemTmpDataHolder {
 
-        private String limit, offset, loginUserId;
+        private String limit, offset, loginUserId, lat, lng;
         private ItemParameterHolder itemParameterHolder;
 
-        public ItemTmpDataHolder(String limit, String offset, String loginUserId, ItemParameterHolder itemParameterHolder) {
+        public ItemTmpDataHolder(String limit, String offset, String loginUserId, ItemParameterHolder itemParameterHolder, String lat, String lng) {
             this.limit = limit;
             this.offset = offset;
             this.loginUserId = loginUserId;
             this.itemParameterHolder = itemParameterHolder;
+            this.lat = lat;
+            this.lng = lng;
         }
     }
 }

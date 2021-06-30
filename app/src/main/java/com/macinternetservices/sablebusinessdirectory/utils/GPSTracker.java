@@ -5,6 +5,7 @@ import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -14,6 +15,8 @@ import android.provider.Settings;
 import android.util.Log;
 
 import com.macinternetservices.sablebusinessdirectory.Config;
+
+import javax.inject.Inject;
 
 public class GPSTracker extends Service implements LocationListener {
 
@@ -40,6 +43,9 @@ public class GPSTracker extends Service implements LocationListener {
 
     // Declaring a Location Manager
     protected LocationManager locationManager;
+    // shared preferences
+    @Inject
+    SharedPreferences pref;
 
     public GPSTracker(Context context) {
         this.mContext = context;
@@ -76,6 +82,8 @@ public class GPSTracker extends Service implements LocationListener {
                         if (location != null) {
 
                             Config.CurrentLocation=location;
+                            pref.edit().putString(Constants.LAT, String.valueOf(location.getLatitude())).apply();
+                            pref.edit().putString(Constants.LNG, String.valueOf(location.getLongitude())).apply();
                             latitude = location.getLatitude();
                             longitude = location.getLongitude();
                         }
@@ -94,6 +102,8 @@ public class GPSTracker extends Service implements LocationListener {
                                     .getLastKnownLocation(LocationManager.GPS_PROVIDER);
                             if (location != null) {
                                 Config.CurrentLocation=location;
+                                pref.edit().putString(Constants.LAT, String.valueOf(location.getLatitude())).apply();
+                                pref.edit().putString(Constants.LNG, String.valueOf(location.getLongitude())).apply();
                                 latitude = location.getLatitude();
                                 longitude = location.getLongitude();
                             }
@@ -125,6 +135,7 @@ public class GPSTracker extends Service implements LocationListener {
     public double getLatitude(){
         if(location != null){
             latitude = location.getLatitude();
+            //pref.edit().putString(Constants.LAT, String.valueOf(location.getLatitude())).apply();
         }
 
         // return latitude
@@ -137,6 +148,7 @@ public class GPSTracker extends Service implements LocationListener {
     public double getLongitude(){
         if(location != null){
             longitude = location.getLongitude();
+            //pref.edit().putString(Constants.LNG, String.valueOf(location.getLongitude())).apply();
         }
 
         // return longitude

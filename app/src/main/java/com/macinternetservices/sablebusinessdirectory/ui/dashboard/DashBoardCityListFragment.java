@@ -130,6 +130,9 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
         gpsTracker = new GPSTracker(getContext());
         preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         gpsTracker.getLocation();
+        //Constants.LAT = String.valueOf(gpsTracker.getLatitude());
+        pref.edit().putString(Constants.LAT, String.valueOf(gpsTracker.getLatitude())).apply();
+        pref.edit().putString(Constants.LNG, String.valueOf(gpsTracker.getLongitude())).apply();
         loadDates();
         if ((this.getActivity()) != null) {
             ((MainActivity) this.getActivity()).binding.toolbar.setBackgroundColor(getResources().getColor(R.color.md_white_1000));
@@ -256,10 +259,10 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
                 popularCitiesViewModel.setPopularCityListObj(String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, popularCitiesViewModel.popularCitiesParameterHolder);
                 recentCitiesViewModel.setRecentCityListObj(String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, recentCitiesViewModel.recentCitiesParameterHolder);
                 blogViewModel.setBlogByIdObj(String.valueOf(Config.LIST_NEW_FEED_COUNT_PAGER), String.valueOf(blogViewModel.offset));
-                discountItemViewModel.setDiscountItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, discountItemViewModel.discountItemParameterHolder);
-                featuredItemViewModel.setFeaturedItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, featuredItemViewModel.featuredItemParameterHolder);
+                discountItemViewModel.setDiscountItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, discountItemViewModel.discountItemParameterHolder, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()));
+                featuredItemViewModel.setFeaturedItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, featuredItemViewModel.featuredItemParameterHolder, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()));
 
-                popularItemViewModel.setPopularItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, popularItemViewModel.popularItemParameterHolder);
+                popularItemViewModel.setPopularItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, popularItemViewModel.popularItemParameterHolder, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()));
             });
         }
 
@@ -490,7 +493,7 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
 
         });
 
-        discountItemViewModel.setDiscountItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, discountItemViewModel.discountItemParameterHolder);
+        discountItemViewModel.setDiscountItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, discountItemViewModel.discountItemParameterHolder, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()));
         discountItemViewModel.getDiscountItemListByKeyData().observe(this, result -> {
 
             if (result != null) {
@@ -516,7 +519,7 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
             }
         });
 
-        featuredItemViewModel.setFeaturedItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, featuredItemViewModel.featuredItemParameterHolder);
+        featuredItemViewModel.setFeaturedItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, featuredItemViewModel.featuredItemParameterHolder, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()));
         featuredItemViewModel.getFeaturedItemListByKeyData().observe(this, result -> {
 
             if (result != null) {
@@ -544,7 +547,7 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
             }
         });
 
-        popularItemViewModel.setPopularItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, popularItemViewModel.popularItemParameterHolder);
+        popularItemViewModel.setPopularItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, popularItemViewModel.popularItemParameterHolder, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()));
         popularItemViewModel.getPopularItemListByKeyData().observe(this, result -> {
 
             if (result != null) {
@@ -573,7 +576,7 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
             }
         });
 
-        recentItemViewModel.setRecentItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, recentItemViewModel.recentItemParameterHolder);
+        recentItemViewModel.setRecentItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, recentItemViewModel.recentItemParameterHolder, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()));
         recentItemViewModel.getRecentItemListByKeyData().observe(this, result -> {
 
             if (result != null) {

@@ -97,7 +97,7 @@ public class LoginUserItemFragment extends PSFragment implements DataBoundListAd
 
                                 int limit = Config.ITEM_COUNT;
                                 itemViewModel.offset = itemViewModel.offset + limit;
-                                itemViewModel.setNextPageItemListByKeyObj(String.valueOf(Config.ITEM_COUNT), String.valueOf(itemViewModel.offset), Utils.checkUserId(loginUserId),itemViewModel.holder);
+                                itemViewModel.setNextPageItemListByKeyObj(String.valueOf(Config.ITEM_COUNT), String.valueOf(itemViewModel.offset), Utils.checkUserId(loginUserId),itemViewModel.holder, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()));
                             }
                         }
                     }
@@ -117,7 +117,7 @@ public class LoginUserItemFragment extends PSFragment implements DataBoundListAd
             itemViewModel.forceEndLoading = false;
 
             // update live data
-            itemViewModel.setItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.ITEM_COUNT), String.valueOf(itemViewModel.offset), itemViewModel.holder);
+            itemViewModel.setItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.ITEM_COUNT), String.valueOf(itemViewModel.offset), itemViewModel.holder, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()));
 
         });
     }
@@ -198,7 +198,7 @@ public class LoginUserItemFragment extends PSFragment implements DataBoundListAd
         itemViewModel.holder.status = status;
 
         //Item
-        itemViewModel.setItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.ITEM_COUNT),  String.valueOf(itemViewModel.offset), itemViewModel.holder);
+        itemViewModel.setItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.ITEM_COUNT),  String.valueOf(itemViewModel.offset), itemViewModel.holder, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()));
 
         LiveData<Resource<List<Item>>> itemList = itemViewModel.getItemListByKeyData();
 

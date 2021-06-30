@@ -26,6 +26,7 @@ import com.macinternetservices.sablebusinessdirectory.databinding.FragmentUpload
 import com.macinternetservices.sablebusinessdirectory.ui.common.DataBoundListAdapter;
 import com.macinternetservices.sablebusinessdirectory.ui.common.PSFragment;
 import com.macinternetservices.sablebusinessdirectory.utils.AutoClearedValue;
+import com.macinternetservices.sablebusinessdirectory.utils.Constants;
 import com.macinternetservices.sablebusinessdirectory.utils.PSDialogMsg;
 import com.macinternetservices.sablebusinessdirectory.utils.Utils;
 import com.macinternetservices.sablebusinessdirectory.viewmodel.item.ItemViewModel;
@@ -132,7 +133,7 @@ public class ItemUploadedListFragment extends PSFragment implements DataBoundLis
                             int limit = Config.ITEM_COUNT;
                             itemViewModel.offset = itemViewModel.offset + limit;
 
-                            itemViewModel.setNextPageItemListByKeyObj( String.valueOf(Config.ITEM_COUNT),String.valueOf(itemViewModel.offset),Utils.checkUserId(loginUserId), itemParameterHolder);
+                            itemViewModel.setNextPageItemListByKeyObj( String.valueOf(Config.ITEM_COUNT),String.valueOf(itemViewModel.offset),Utils.checkUserId(loginUserId), itemParameterHolder, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()));
                         }
                     }
                 }
@@ -152,7 +153,7 @@ public class ItemUploadedListFragment extends PSFragment implements DataBoundLis
             itemViewModel.forceEndLoading = false;
 
             // update live data
-            itemViewModel.setItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.ITEM_COUNT), String.valueOf(itemViewModel.offset), itemParameterHolder);
+            itemViewModel.setItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.ITEM_COUNT), String.valueOf(itemViewModel.offset), itemParameterHolder, Constants.LAT,Constants.LNG);
 
         });
     }
@@ -255,7 +256,7 @@ public class ItemUploadedListFragment extends PSFragment implements DataBoundLis
         itemParameterHolder = new ItemParameterHolder().getUploadedItemClickMenu();
         itemParameterHolder.added_user_id = loginUserId;
         // Load item list
-        itemViewModel.setItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.ITEM_COUNT), String.valueOf(itemViewModel.offset), itemParameterHolder);
+        itemViewModel.setItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.ITEM_COUNT), String.valueOf(itemViewModel.offset), itemParameterHolder, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()));
 
         LiveData<Resource<List<Item>>> news = itemViewModel.getItemListByKeyData();
 
@@ -373,7 +374,7 @@ public class ItemUploadedListFragment extends PSFragment implements DataBoundLis
             if(dataList != null) {
                 Utils.psLog("First Record Reload.");
                 itemViewModel.offset=0;
-                itemViewModel.setItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.ITEM_COUNT), String.valueOf(itemViewModel.offset), itemParameterHolder);
+                itemViewModel.setItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.ITEM_COUNT), String.valueOf(itemViewModel.offset), itemParameterHolder, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()));
             }else {
                 Utils.psLog("Not First Record Reload.");
             }
