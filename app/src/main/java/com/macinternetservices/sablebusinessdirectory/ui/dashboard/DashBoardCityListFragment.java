@@ -129,10 +129,7 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
         binding = new AutoClearedValue<>(this, dataBinding);
         gpsTracker = new GPSTracker(getContext());
         preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        gpsTracker.getLocation();
-        //Constants.LAT = String.valueOf(gpsTracker.getLatitude());
-        pref.edit().putString(Constants.LAT, String.valueOf(gpsTracker.getLatitude())).apply();
-        pref.edit().putString(Constants.LNG, String.valueOf(gpsTracker.getLongitude())).apply();
+        Config.CurrentLocation = gpsTracker.getLocation();
         loadDates();
         if ((this.getActivity()) != null) {
             ((MainActivity) this.getActivity()).binding.toolbar.setBackgroundColor(getResources().getColor(R.color.md_white_1000));
