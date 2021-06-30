@@ -325,7 +325,7 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
             Animation imgAnimationIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
 
             String[] text = {
-                    "Hello and welcome to The Sable Business Directory mobile app.",
+                   /* "Hello and welcome to The Sable Business Directory mobile app.",
 
                     "We make it easier to find, rate and review black owned businesses.",
 
@@ -337,7 +337,7 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
 
                     "We insure high quality feedback by requiring users to login before adding or reviewing a listing.",
 
-                    "We need your permission to alert you when you're near a black owned business.",
+                    "We need your permission to alert you when you're near a black owned business.", */
 
                     "The app requires special permission to access your location when not running to alert you when you're near a registered black owned business.",
 
@@ -345,16 +345,13 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
 
             };
 
-            int[] images = {R.mipmap.hello_foreground, R.mipmap.showing_right_foreground,
-                    R.mipmap.one_of_akind_foreground, R.mipmap.showing_tablet_foreground, R.mipmap.holding_phone_foreground, R.mipmap.making_thumbs_up_foreground,
-                    R.mipmap.online_reviews_foreground, R.mipmap.showing_with_left_hand_foreground, R.mipmap.smiling_peace_foreground};
+            int[] images = {R.mipmap.making_thumbs_up_foreground, R.mipmap.smiling_peace_foreground};
 
-            if (count == text.length) {
-                count = 0;
-            }
+            count = 0;
+
             switch (count) {
 
-                case 8:
+                case 1:
                     imageView.setImageResource(images[count]);
                     imageView.setAnimation(imgAnimationIn);
                     imageView.setVisibility(View.VISIBLE);
@@ -369,13 +366,6 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
                     imageSwitchHandler.removeCallbacks(this);
                     count++;
                     break;
-                case 2:
-                case 4:
-                case 6:
-                case 1:
-                case 3:
-                case 5:
-                case 7:
                 default:
                     imageView.setImageResource(images[count]);
                     imageView.setAnimation(imgAnimationIn);
