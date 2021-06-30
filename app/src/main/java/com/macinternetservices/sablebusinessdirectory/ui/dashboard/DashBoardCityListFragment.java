@@ -128,7 +128,7 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
         //selectedCityId = "";
         binding = new AutoClearedValue<>(this, dataBinding);
         gpsTracker = new GPSTracker(getContext());
-        preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        //preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         Config.CurrentLocation = gpsTracker.getLocation();
         loadDates();
         if ((this.getActivity()) != null) {
@@ -714,82 +714,35 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
         double dist = earthRadius * c;
         return dist; // output distance, in MILES
     }
-
-    private int date(String itemDate) throws ParseException {
-        SimpleDateFormat dates = new SimpleDateFormat("MM/dd/yyyy");
-        //Date date2 = dates.parse(itemDate);
-        //Date currentTime = Calendar.getInstance().getTime();
-        Date currentDate = dates.parse(String.valueOf(Calendar.getInstance().getTime()));
-        long difference = Math.abs(currentDate.getTime() - dates.parse(itemDate).getTime());
-        long differenceDates = difference / (24 * 60 * 60 * 1000);
-        //String dayDifference = Long.toString(differenceDates);
-        return (int) differenceDates;
-    }
     @SuppressLint("NewApi")
     private void replaceFeaturedItem(List<Item> itemList) {
                 /*List<Item> featuredList = new ArrayList<>();
                 for (Item item : itemList) {
-                    if (item.isPromotion.equals("1") || item.isFeatured.equals("1")&& distance(gpsTracker.getLatitude(), gpsTracker.getLongitude(),
-                            Double.parseDouble(item.lat), Double.parseDouble(item.lng)) <= Double.parseDouble(Constants.CONST_RADIUS)) {
+                    if (item.isPromotion.equals("1") || item.isFeatured.equals("1")) {
                         featuredList.add(item);
                     }
-                    distance(gpsTracker.getLatitude(), gpsTracker.getLongitude(),
-                            Double.parseDouble(item.lat), Double.parseDouble(item.lng));
-                }
-                if(featuredList.size() > 0){
-                    itemList.addAll(0, featuredList);
-                }*/
+                } */
+        itemList.sort((o1, o2) -> Double.compare(Double.parseDouble(o2.overallRating),Double.parseDouble(o1.overallRating)));
         this.featuredItemListAdapter.get().replace(itemList);
         binding.get().executePendingBindings();
     }
 
     @SuppressLint("NewApi")
     private void replaceDiscountItem(List<Item> itemList) {
-       /* if (itemList != null) {
-            if (!preferences.getString(Constants.RADIUS_KEY, "").equals("All")) {
-                List<Item> discountList = new ArrayList<>();
+                /*List<Item> discountList = new ArrayList<>();
                 for (Item item : itemList) {
-                    if (item.isPromotion.equals("1") || item.isFeatured.equals("1")&& distance(gpsTracker.getLatitude(), gpsTracker.getLongitude(),
-                            Double.parseDouble(item.lat), Double.parseDouble(item.lng)) <= Double.parseDouble(Constants.CONST_RADIUS)) {
+                    if (item.isFeatured.equals("1")) {
                         discountList.add(item);
-                      /*  distance(gpsTracker.getLatitude(), gpsTracker.getLongitude(),
-                                Double.parseDouble(item.lat), Double.parseDouble(item.lng));
                     }
-                }
-                itemList.sort((o1, o2) -> Double.compare(distance(Float.parseFloat(o1.lat), Float.parseFloat(o1.lng), Float.parseFloat(String.valueOf(gpsTracker.getLatitude())),
-                        Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))), distance(Float.parseFloat(o2.lat), Float.parseFloat(o2.lng),
-                        Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude())))));
-                if(discountList.size() > 0) {
-                    itemList.addAll(0, discountList);
-                }
-            }
-        } */
-        this.discountItemListAdapter.get().replace(itemList);
-        binding.get().executePendingBindings();
+                } */
+                itemList.sort((o1, o2) -> Double.compare(Double.parseDouble(o2.overallRating),Double.parseDouble(o1.overallRating)));
+                this.discountItemListAdapter.get().replace(itemList);
+                binding.get().executePendingBindings();
     }
 
     @SuppressLint("NewApi")
     private void replacePopularPlacesList(List<Item> itemList) {
-       /* if (itemList != null) {
-            if (!preferences.getString(Constants.RADIUS_KEY, "").equals("All")) {
-                List<Item> popularList = new ArrayList<>();
-                for (Item item : itemList) {
-                    if (item.ratingDetails.totalRatingValue >= 3 && distance(gpsTracker.getLatitude(), gpsTracker.getLongitude(),
-                            Double.parseDouble(item.lat), Double.parseDouble(item.lng)) <= Double.parseDouble(Constants.CONST_RADIUS)) {
-                        popularList.add(item);
-                        distance(gpsTracker.getLatitude(), gpsTracker.getLongitude(),
-                                Double.parseDouble(item.lat), Double.parseDouble(item.lng));
-                    }
-                }
-                itemList.sort((o1, o2) -> Double.compare(distance(Float.parseFloat(o1.lat), Float.parseFloat(o1.lng), Float.parseFloat(String.valueOf(gpsTracker.getLatitude())),
-                        Float.parseFloat(String.valueOf(gpsTracker.getLongitude()))), distance(Float.parseFloat(o2.lat), Float.parseFloat(o2.lng),
-                        Float.parseFloat(String.valueOf(gpsTracker.getLatitude())), Float.parseFloat(String.valueOf(gpsTracker.getLongitude())))));
-
-                if(popularList.size() > 0) {
-                    itemList.addAll(0, popularList);
-                }
-            }
-        } */
+        itemList.sort((o1, o2) -> Double.compare(Double.parseDouble(o2.overallRating),Double.parseDouble(o1.overallRating)));
         this.popularItemListAdapter.get().replace(itemList);
         binding.get().executePendingBindings();
     }
@@ -816,6 +769,7 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
                 }
             }
         } */
+        itemList.sort((o1, o2) -> Double.compare(Double.parseDouble(o2.overallRating),Double.parseDouble(o1.overallRating)));
         this.recentItemListAdapter.get().replace(itemList);
         binding.get().executePendingBindings();
     }
