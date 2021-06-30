@@ -347,7 +347,6 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
 
             int[] images = {R.mipmap.making_thumbs_up_foreground, R.mipmap.smiling_peace_foreground};
 
-            count = 0;
 
             switch (count) {
 
