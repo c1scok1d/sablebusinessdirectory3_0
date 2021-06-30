@@ -64,16 +64,9 @@ import com.macinternetservices.sablebusinessdirectory.viewobject.UserLogin;
         ItemStatus.class,
         ItemPaidHistory.class
 
-}, version = 8, exportSchema = false)
-//2.1 = 8
-//2.0 = 7
-//1.9 = 6
-//1.8 = 5
-//1.6 = 4
-//1.5 = 4
-//1.4 = 4
-//1.3 = 3
-//1.2 = 2
+}, version = 1, exportSchema = false)
+//3.0 = 1
+
 
 
 @TypeConverters({Converters.class})
