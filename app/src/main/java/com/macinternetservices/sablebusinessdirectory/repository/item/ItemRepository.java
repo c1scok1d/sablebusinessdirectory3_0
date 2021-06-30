@@ -243,10 +243,9 @@ public class ItemRepository extends PSRepository {
             protected LiveData<ApiResponse<List<Item>>> createCall() {
                 Utils.psLog("Call API Service to getProductListByKey.");
 
-                String miles ="20";
-                return psApiService.searchItem(Config.API_KEY, limit, offset, loginUserId, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()), itemParameterHolder.keyword, itemParameterHolder.city_id, itemParameterHolder.cat_id, itemParameterHolder.sub_cat_id,
-                        itemParameterHolder.order_by, itemParameterHolder.order_type, itemParameterHolder.rating_value, itemParameterHolder.is_featured, itemParameterHolder.is_promotion, /*itemParameterHolder.lat,
-                        itemParameterHolder.lng,*/ itemParameterHolder.miles,itemParameterHolder.added_user_id,itemParameterHolder.isPaid, itemParameterHolder.status);
+                return psApiService.searchItem(Config.API_KEY, limit, offset, Utils.checkUserId(loginUserId), String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()), itemParameterHolder.keyword, itemParameterHolder.city_id, itemParameterHolder.cat_id, itemParameterHolder.sub_cat_id,
+                        itemParameterHolder.order_by, itemParameterHolder.order_type, itemParameterHolder.rating_value, itemParameterHolder.is_featured, itemParameterHolder.is_promotion, itemParameterHolder.lat,
+                        itemParameterHolder.lng, itemParameterHolder.miles,itemParameterHolder.added_user_id,itemParameterHolder.isPaid, itemParameterHolder.status);
 
             }
 
@@ -280,9 +279,9 @@ public class ItemRepository extends PSRepository {
 
 //        prepareRatingValueForServer(productParameterHolder);
 
-        LiveData<ApiResponse<List<Item>>> apiResponse = psApiService.searchItem(Config.API_KEY, limit, offset, loginUserId, String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()), itemParameterHolder.keyword, itemParameterHolder.city_id, itemParameterHolder.cat_id, itemParameterHolder.sub_cat_id,
-                itemParameterHolder.order_by, itemParameterHolder.order_type, itemParameterHolder.rating_value, itemParameterHolder.is_featured, itemParameterHolder.is_promotion, /*itemParameterHolder.lat,
-                itemParameterHolder.lng,*/ itemParameterHolder.miles,itemParameterHolder.added_user_id,itemParameterHolder.isPaid, itemParameterHolder.status);
+        LiveData<ApiResponse<List<Item>>> apiResponse = psApiService.searchItem(Config.API_KEY, limit, offset, Utils.checkUserId(loginUserId), String.valueOf(Config.CurrentLocation.getLatitude()), String.valueOf(Config.CurrentLocation.getLongitude()), itemParameterHolder.keyword, itemParameterHolder.city_id, itemParameterHolder.cat_id, itemParameterHolder.sub_cat_id,
+                itemParameterHolder.order_by, itemParameterHolder.order_type, itemParameterHolder.rating_value, itemParameterHolder.is_featured, itemParameterHolder.is_promotion, itemParameterHolder.lat,
+                itemParameterHolder.lng, itemParameterHolder.miles,itemParameterHolder.added_user_id,itemParameterHolder.isPaid, itemParameterHolder.status);
 
         statusLiveData.addSource(apiResponse, response -> {
 
