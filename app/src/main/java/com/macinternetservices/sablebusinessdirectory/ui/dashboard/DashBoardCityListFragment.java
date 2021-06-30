@@ -507,7 +507,7 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
                     case SUCCESS:
 
                         if (result.data != null) {
-                            //    replaceDiscountItem(result.data);
+                            replaceDiscountItem(result.data);
                         }
                         discountItemViewModel.setLoadingState(false);
                         break;
